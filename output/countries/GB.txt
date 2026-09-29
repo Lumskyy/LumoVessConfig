@@ -1,0 +1,1 @@
+vless://a1de0630-5786-48a0-84f6-dc6f2de10d6d@91.193.58.125:2053?encryption=none&security=tls&sni=vlso5.1d.mom&fp=chrome&insecure=0&allowInsecure=0&type=ws&host=vlso5.1d.mom&path=%2F#United%20Kingdom%20%C2%B7%2001%20%C2%B7%202ms%20%C2%B7%20VLESS%20TLS%20WS
