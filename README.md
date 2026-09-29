@@ -1,12 +1,24 @@
-<img src="assets/logo.svg" width="96" alt="LumoVessConfig logo">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/logo.svg">
+  <img src="assets/logo-light.svg" width="96" alt="LumoVessConfig logo">
+</picture>
 
 LumoVessConfig
 
 Free VLESS lists that refresh every 3 hours, shaped for Happ.
 
-I got tired of pasting dead subscriptions, so I put this together. It pulls open VLESS and proxy sources, drops duplicates, checks each node three times, and keeps the ones that actually move traffic. The files below go straight into Happ as subscriptions.
+[![update](https://github.com/lumskyy/LumoVessConfig/actions/workflows/update.yml/badge.svg)](https://github.com/lumskyy/LumoVessConfig/actions/workflows/update.yml)
+![alive](assets/badges/alive.svg)
+![elite](assets/badges/elite.svg)
+![countries](assets/badges/countries.svg)
+![updated](assets/badges/updated.svg)
 
-<img src="assets/happ.svg" width="220" alt="How names look in Happ">
+I got tired of pasting dead subscriptions, so I put this together. It pulls open VLESS and proxy sources, drops duplicates, checks each node three times, and keeps the ones that actually move traffic. The files below go straight into Happ as subscriptions. Numbers above refresh with every run.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/happ.svg">
+  <img src="assets/happ-light.svg" width="220" alt="How names look in Happ">
+</picture>
 
 Add to Happ
 
@@ -31,9 +43,12 @@ Country files use the same pattern, with the two letter code at the end:
 
 Which file to pick
 
-Short answer: elite first, best second, a country or game file when you need something specific. Longer answer below, because the files differ in what they promise.
+Short answer: elite first, best second, a country or game file when you need something specific.
 
-<img src="assets/choice.svg" width="560" alt="Which file to pick diagram">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/choice.svg">
+  <img src="assets/choice-light.svg" width="560" alt="Which file to pick diagram">
+</picture>
 
 Elite is the strict file. It holds at most 80 nodes with a cap of 8 per country, so small countries stay visible next to the United States. Every elite node passed all three check rounds, answered both Google probes and the Cloudflare trace through itself, showed an exit IP different from the direct one, and left no checker address in the echoed headers. Its HTTP median sits under 800 ms with TCP under 500 ms, and the spread between rounds stays narrow. That last rule matters more than it looks. A node can show a fine median while freezing for seconds at a time, and those freezes wreck calls and games. The spread check keeps such nodes out of elite even when their median looks good.
 
@@ -72,17 +87,25 @@ The same alive set ships in three more formats, refreshed together with the Happ
 
 Clash Verge and Clash Meta read clash.yaml, which carries Lumo-Auto and Lumo-Select groups. sing-box reads singbox.json. v2rayNG, NekoBox, Streisand and Shadowrocket read v2ray.txt, which is the base64 form of the alive list, or any happ-*.txt as plain text.
 
-<img src="assets/pipeline.svg" width="720" alt="Pipeline diagram">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/pipeline.svg">
+  <img src="assets/pipeline-light.svg" width="720" alt="Pipeline diagram">
+</picture>
 
 How the check works
+
+Three rounds run with a pause between them. Round one opens TCP and records the time. Round two completes TLS where the node asks for it. Round three pushes real requests through sing-box: Google generate_204 over http and https, Cloudflare trace, an IP echo and a headers echo. A node counts as alive when TCP opens in at least two rounds and the HTTP probes answer without exposing the checker IP. Exit IP has to differ from the direct IP.
+
+Elite adds the hard rules from the section above on top of this base. Overload cannot be read off a free node directly, so consistency across three spaced rounds stands in for it, and Happ url-test rechecks every few minutes on your side anyway. Without the sing-box binary the runner falls back to strict TCP under 350 ms with full rounds, and the site marks that run as tcp only.
+
+<details>
+<summary>Full source list and schedule</summary>
 
 The workflow runs at minute 17 every 3 hours. It downloads 39 sources I checked by hand in September 2026, all returning live links: 0xRadikal verified and top100, Au1rxx hourly output, mehrtat xray-tested, aviamastersgh verified, hiztin GRIBI parts 1 to 3, MatinGhanbari, barry-far, Epodonios, ebrasha, Pawdroid sub, TGParse vless and mixed, SoliSpirit, V2RayRoot, Delta-Kronecker, OpenRay valid proxies, sevcator vl and ss, gfpcom vless, xrayvip free, freenode featured, wlunlocker black and white lists, igareck black VLESS and white mobile. Six AvenCores links and three small aggregators died during the check and got removed.
 
 Parsing takes vless, vmess, trojan, ss, hysteria2 and tuic, then removes exact duplicates by id, host, port and transport. VLESS goes first because it holds up better under DPI in my tests, with Reality plus Vision ranked highest.
 
-Then three rounds run with a pause between them. Round one opens TCP and records the time. Round two completes TLS where the node asks for it. Round three pushes real requests through sing-box: Google generate_204 over http and https, Cloudflare trace, an IP echo and a headers echo. A node counts as alive when TCP opens in at least two rounds and the HTTP probes answer without exposing the checker IP. Exit IP has to differ from the direct IP.
-
-Elite adds the hard rules from the section above on top of this base. Overload cannot be read off a free node directly, so consistency across three spaced rounds stands in for it, and Happ url-test rechecks every few minutes on your side anyway. Without the sing-box binary the runner falls back to strict TCP under 350 ms with full rounds, and the site marks that run as tcp only.
+</details>
 
 Site with counts
 
@@ -94,7 +117,8 @@ Free nodes change owners, fill up, or vanish between hours. A node that passed a
 
 Nothing here promises no logs. The server side belongs to whoever published the node. If traffic has to stay private, run your own Reality node and use these lists only for the rest.
 
-Run it yourself
+<details>
+<summary>Run it yourself</summary>
 
     pip install -r requirements.txt
     python -m src.run
@@ -103,7 +127,9 @@ Smaller test run:
 
     LUMO_ROUNDS=1 LUMO_DELAY=2 LUMO_PREFILTER=50 LUMO_MAXIN=300 python -m src.run
 
-Files land in output and docs/data.json updates with them. Sources live in src, one job per file: fetch, parse, check, rank, emit. tools/validate.py rechecks every source URL by hand whenever you want. Tests cover parsing, dedupe, country flags and the elite rule.
+Files land in output and docs/data.json updates with them. Sources live in src, one job per file: fetch, parse, check, rank, emit. tools/validate.py rechecks every source URL by hand whenever you want, and tools/verify_output.py checks the generated files. Tests cover parsing, dedupe, country flags and the elite rule.
+
+</details>
 
 License
 
