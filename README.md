@@ -45,6 +45,15 @@ Which file to pick
 
 Short answer: elite first, best second, a country or game file when you need something specific.
 
+| File | What sits inside | Take it when |
+| --- | --- | --- |
+| happ-elite.txt | up to 80 strictest, 8 per country max | you want the hardest check |
+| happ-best.txt | wider top 120 | elite feels thin on your route |
+| happ-gaming.txt | low ping with working UDP first | you play or call |
+| happ-all.txt | everything alive, up to 800 | you download a lot |
+| happ-vless.txt | alive set, VLESS only | your client likes one protocol |
+| countries/XX.txt | one country, fastest first | you need a fixed exit |
+
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/choice.svg">
   <img src="assets/choice-light.svg" width="560" alt="Which file to pick diagram">
@@ -54,9 +63,9 @@ Elite is the strict file. It holds at most 80 nodes with a cap of 8 per country,
 
 Anonymity in elite means the connection layer does not expose you: no real IP in headers, exit IP belongs to the node, DNS and WebRTC have nothing of yours to show because the traffic leaves from the node address. What elite cannot promise is the server side. The machine belongs to whoever published the node, and no outside check can prove it keeps no logs. For everyday browsing, streaming and play, elite is the right default. For traffic that must stay private, run your own Reality node and keep these lists for everything else.
 
-Best is the wider top 120 by score. Its base hygiene matches elite: no leaks, exit IP verified, at least two green rounds. Tolerances sit wider, so best includes nodes with higher ping, a single slow round, or a missing Cloudflare answer. Use it when elite feels thin on your route. In practice that happens on strict networks where few nodes answer everything.
+Best is the wider top 120 by score. Its base hygiene matches elite: no leaks, exit IP verified, at least two green rounds. On full-probe runs it also asks for a sign of life beyond TCP: at least one UDP answer or HTTP under 400 ms. Tolerances sit wider otherwise, so best includes nodes with higher ping, a single slow round, or a missing Cloudflare answer. Use it when elite feels thin on your route. In practice that happens on strict networks where few nodes answer everything.
 
-Game files and country files solve narrower problems. The game file holds low ping TCP nodes with working UDP first, usually Reality or Vision, for play. A country file pins the exit to one place, which helps with regional services and with picking a nearby route. The all file goes up to 800 alive nodes and suits downloads, where a steady slower node beats a fast flaky one. The vless file is the alive set filtered to VLESS only.
+Game files and country files solve narrower problems. The game file holds low ping TCP nodes with working UDP first, usually Reality or Vision, for play. On full-probe runs nodes without a single UDP answer never enter it, since games drop them first anyway. A country file pins the exit to one place, which helps with regional services and with picking a nearby route. The all file goes up to 800 alive nodes and suits downloads, where a steady slower node beats a fast flaky one. The vless file is the alive set filtered to VLESS only.
 
 When nothing connects, refresh the subscription first. Free nodes die between hours, and Happ may hold yesterday evening addresses. After refresh, step down one tier: elite to best, best to the closest country file.
 
@@ -64,12 +73,12 @@ What the names mean
 
 Every line gets a name with the full country name, so the list reads well in Happ on any system. Flag emoji stay out on purpose: Windows draws them as plain letter pairs, which doubles the country code and looks broken. The first symbol tells you the tier.
 
-    🏆 ELITE · Poland · 01 · 142ms · VLESS
-    ⭐ BEST · Germany · 01 · 168ms · VLESS
-    🎮 GAME · Netherlands · 01 · 188ms · VLESS
-    Japan · 04 · 182ms · VLESS
+    🏆 ELITE · Poland · 01 · 142ms · VLESS Reality+Vision
+    ⭐ BEST · Germany · 01 · 168ms · VLESS TLS
+    🎮 GAME · Netherlands · 01 · 188ms · VLESS Reality
+    Japan · 04 · 182ms · VMess
 
-After the tier comes the full country name, then the position inside that country, the measured ping and the protocol. Elite and best float to the top of an alphabetical sort.
+After the tier comes the full country name, then the position inside that country, the measured ping, the protocol, and the transport it was caught with: Reality, TLS, Vision, WS and so on. Rows stop looking identical, and you can spot at a glance what each node speaks. Elite and best float to the top of an alphabetical sort.
 
 Countries
 
@@ -101,7 +110,7 @@ Elite adds the hard rules from the section above on top of this base. Overload c
 <details>
 <summary>Full source list and schedule</summary>
 
-The workflow runs at minute 17 every 3 hours. It downloads 39 sources I checked by hand in September 2026, all returning live links: 0xRadikal verified and top100, Au1rxx hourly output, mehrtat xray-tested, aviamastersgh verified, hiztin GRIBI parts 1 to 3, MatinGhanbari, barry-far, Epodonios, ebrasha, Pawdroid sub, TGParse vless and mixed, SoliSpirit, V2RayRoot, Delta-Kronecker, OpenRay valid proxies, sevcator vl and ss, gfpcom vless, xrayvip free, freenode featured, wlunlocker black and white lists, igareck black VLESS and white mobile. Six AvenCores links and three small aggregators died during the check and got removed.
+The workflow runs at minute 17 every 3 hours. It downloads 54 sources I checked by hand, all returning live links: 0xRadikal verified and top100, Au1rxx hourly output, mehrtat xray-tested, aviamastersgh verified, hiztin GRIBI parts 1 to 3, ShatakVPN latency-ranked, MahanKenway ping-tested mix, kort0881 Russia-focused, 10ium high speed, MatinGhanbari, barry-far, Epodonios, ebrasha, Pawdroid sub, TGParse vless and mixed, SoliSpirit, V2RayRoot, Delta-Kronecker, OpenRay valid proxies, zengfr, cbusifabcap daily, NiREvil, sevcator vl and ss, gfpcom vless, xrayvip free, freenode featured, wlunlocker black and white lists, igareck black VLESS and white mobile.
 
 Parsing takes vless, vmess, trojan, ss, hysteria2 and tuic, then removes exact duplicates by id, host, port and transport. VLESS goes first because it holds up better under DPI in my tests, with Reality plus Vision ranked highest.
 

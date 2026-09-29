@@ -76,3 +76,25 @@ def test_elite_needs_udp_and_vless_tls():
     out = pick_elite([no_udp, plain, good], 3, True)
     assert len(out) == 1
     assert out[0][1]["node"]["host"] == "1.1.1.1"
+
+
+def test_pretty_name_extra():
+    from src.emit import pretty_name
+    assert pretty_name("best", "DE", 1, 168, "vless", "Reality+Vision") == "⭐ BEST · Germany · 01 · 168ms · VLESS Reality+Vision"
+    assert pretty_name("std", "JP", 4, 182, "vless", "") == "Japan · 04 · 182ms · VLESS"
+
+
+def test_best_needs_signal_in_full_mode():
+    from src.rank import pick_best
+    slow = (5, {"node": {"host": "1.1.1.1", "port": 443, "id": "a"}, "udp_ok": 0, "http_ms": 900})
+    quick = (10, {"node": {"host": "2.2.2.2", "port": 443, "id": "b"}, "udp_ok": 0, "http_ms": 200})
+    assert pick_best([slow, quick], True) == [quick]
+    assert pick_best([slow, quick], False) == [slow, quick]
+
+
+def test_gaming_needs_udp_in_full_mode():
+    from src.rank import pick_gaming
+    mute = (5, {"node": {"host": "1.1.1.1", "port": 443, "id": "a", "proto": "vless", "country": "US"}, "tcp_ms": 100, "rounds_ok": 3, "udp_ok": 0})
+    live = (4, {"node": {"host": "2.2.2.2", "port": 443, "id": "b", "proto": "vless", "country": "US"}, "tcp_ms": 200, "rounds_ok": 3, "udp_ok": 2})
+    assert pick_gaming([mute, live], True) == [live]
+    assert pick_gaming([mute, live], False) == [live, mute]

@@ -91,3 +91,21 @@ a {
     grid-template-columns: repeat(2, 1fr);
   }
 }
+.err {
+  background: #3d1a1a;
+  border: 1px solid #7a2e2e;
+  border-radius: 12px;
+  padding: 12px 14px;
+  margin-top: 12px;
+}
+#q {
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 10px;
+  padding: 9px 12px;
+  border: 1px solid #2a3340;
+  background: #161c26;
+  color: #e8ecf1;
+  border-radius: 8px;
+  font-size: 14px;
+}

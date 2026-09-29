@@ -27,6 +27,10 @@
 <p><code id="countrypattern">https://raw.githubusercontent.com/lumskyy/LumoVessConfig/main/output/countries/JP.txt</code> <button id="copypattern">Copy</button></p>
 </section>
 <section>
+<h2>How to add in Happ</h2>
+<p>Open the add dialog, set Type to Subscription, and fill two fields. Name anything clear, like Lumo ELITE. Paste the link with no spaces around it. Leave Encrypted subscription off, since these lists are open, and leave unsafe connections off, since every link here is https. Press Add and Happ pulls the servers in a couple of seconds. Repeat for each file you want.</p>
+</section>
+<section>
 <h2>Right now</h2>
 <div class="grid">
 <div><div class="num" id="alive">0</div><div class="lbl">alive after three rounds</div></div>
@@ -38,7 +42,8 @@
 <div><div class="num" id="mhttp">0</div><div class="lbl">median http, ms</div></div>
 <div><div class="num" id="mudp">0</div><div class="lbl">median udp, ms</div></div>
 </div>
-<p class="muted">Pulled <span id="totalin">0</span>, parsed <span id="parsed">0</span>, sources ok <span id="sources">0</span>.</p>
+<p class="muted">Pulled <span id="totalin">0</span>, parsed <span id="parsed">0</span>, sources ok <span id="sources">0</span>, mode <span id="mode">unknown</span>.</p>
+<div id="errbox" class="err" style="display:none"></div>
 </section>
 <section>
 <h2>Other clients</h2>
@@ -50,8 +55,13 @@
 </ul>
 </section>
 <section>
+<h2>What the tiers mean</h2>
+<p>ELITE is up to 80 nodes with 8 per country max: VLESS with TLS or Reality, three green rounds, Google twice plus Cloudflare through the node, UDP DNS answered, no leaks, narrow spread. BEST is the wider top 120 with the same hygiene and softer tolerances. GAME sorts low ping nodes with working UDP first. Plain rows are the rest of the alive set, fastest first, with the transport written out so rows read differently.</p>
+</section>
+<section>
 <h2>By country</h2>
 <p>Each file holds that country only, fastest first. Poland, Russia and Ukraine appear here whenever their nodes survive the hour.</p>
+<input id="q" type="search" placeholder="Filter countries...">
 <table>
 <thead><tr><th>Code</th><th>Nodes</th><th>File</th></tr></thead>
 <tbody id="ctable"></tbody>

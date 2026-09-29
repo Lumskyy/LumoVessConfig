@@ -49,6 +49,21 @@ var NAMES = {US:"United States",JP:"Japan",SG:"Singapore",NL:"Netherlands",DE:"G
 
 async function init() {
   bindCopy();
+  var q = document.getElementById("q");
+  if (q) {
+    q.addEventListener("input", function () {
+      var tb = document.getElementById("ctable");
+      if (!tb) {
+        return;
+      }
+      var s = q.value.toLowerCase();
+      var rows = tb.querySelectorAll("tr");
+      for (var i = 0; i < rows.length; i++) {
+        var t = rows[i].textContent.toLowerCase();
+        rows[i].style.display = t.indexOf(s) >= 0 ? "" : "none";
+      }
+    });
+  }
   var data = null;
   try {
     var r = await fetch("data.json", { cache: "no-store" });
@@ -75,6 +90,16 @@ async function init() {
   setText("totalin", data.total_in || 0);
   setText("parsed", data.parsed || 0);
   setText("sources", String(data.sources_ok || 0) + " of " + String(data.sources_total || 0));
+  setText("mode", data.full_probe ? "full" : "tcp only");
+  var eb = document.getElementById("errbox");
+  if (eb) {
+    if (data.error) {
+      eb.textContent = "This run found nothing alive, previous lists kept: " + data.error;
+      eb.style.display = "block";
+    } else {
+      eb.style.display = "none";
+    }
+  }
   var counts = data.country_counts || {};
   var rows = Object.keys(counts).map(function (k) { return [k, counts[k]]; });
   rows.sort(function (a, b) { return b[1] - a[1]; });

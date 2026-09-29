@@ -113,16 +113,24 @@ def rank_all(checked):
     return alive, has_full
 
 
-def pick_best(alive, limit=120):
-    return alive[:limit]
+def pick_best(alive, has_full, limit=120):
+    out = []
+    for s, x in alive:
+        if has_full:
+            if int(x.get("udp_ok", 0)) < 1 and float(x.get("http_ms", 0) or 9999) > 400:
+                continue
+        out.append((s, x))
+    return out[:limit]
 
 
-def pick_gaming(alive, limit=150):
+def pick_gaming(alive, has_full, limit=150):
     out = []
     for s, x in alive:
         n = x.get("node", {})
         tcp = float(x.get("tcp_ms", 9999))
         if tcp > 450:
+            continue
+        if has_full and int(x.get("udp_ok", 0)) < 1:
             continue
         if int(x.get("rounds_ok", 0)) < 3:
             if int(x.get("rounds_ok", 0)) < 2:

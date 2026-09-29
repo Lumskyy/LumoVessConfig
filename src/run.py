@@ -18,7 +18,7 @@ async def main():
     total_in = len(flat)
     nodes = parse_all(flat)
     parsed = len(nodes)
-    maxin = int(os.environ.get("LUMO_MAXIN", "3000"))
+    maxin = int(os.environ.get("LUMO_MAXIN", "5000"))
     if maxin > 0:
         nodes = nodes[:maxin]
     if not nodes:
@@ -43,9 +43,9 @@ async def main():
         with open(os.path.join("docs", "data.json"), "w", encoding="utf-8") as f:
             json.dump(stats, f, ensure_ascii=False, indent=2)
         return
-    best_pairs = pick_best(alive, limit=120)
+    best_pairs = pick_best(alive, has_full, limit=120)
     elite_pairs = pick_elite(alive, rounds, has_full, limit=80, per_country=8)
-    game_pairs = pick_gaming(alive, limit=150)
+    game_pairs = pick_gaming(alive, has_full, limit=150)
     groups = group_countries(alive, per=40)
     best_keys = finalize(best_pairs, alive)
     elite_keys = finalize(elite_pairs, alive)

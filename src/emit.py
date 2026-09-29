@@ -26,12 +26,14 @@ def short_rtt(x):
         return 9999
 
 
-def pretty_name(kind, cc, idx, rtt, proto):
+def pretty_name(kind, cc, idx, rtt, proto, extra=""):
     cc = (cc or "UN").upper()
     proto = (proto or "vless").upper()
     name = NAMES.get(cc, cc)
     num = str(idx).zfill(2)
     tail = name + " · " + num + " · " + str(rtt) + "ms · " + proto
+    if extra:
+        tail = tail + " " + extra
     if kind == "elite":
         return "🏆 ELITE · " + tail
     if kind == "best":
@@ -51,7 +53,19 @@ def rename_list(pairs, kind_mode="std"):
         rtt = short_rtt(x)
         counters[cc] = counters.get(cc, 0) + 1
         idx = counters[cc]
-        name = pretty_name(kind_mode if kind_mode in ("elite", "best", "game") else "std", cc, idx, rtt, proto)
+        sec = str(n.get("security", "") or "").lower()
+        flow = str(n.get("flow", "") or "").lower()
+        tr = str(n.get("transport", "tcp") or "tcp").lower()
+        extra = ""
+        if sec == "reality":
+            extra = "Reality"
+        elif sec == "tls":
+            extra = "TLS"
+        if "vision" in flow:
+            extra = (extra + "+Vision") if extra else "Vision"
+        if tr not in ("tcp", ""):
+            extra = (extra + " " + tr.upper()) if extra else tr.upper()
+        name = pretty_name(kind_mode if kind_mode in ("elite", "best", "game") else "std", cc, idx, rtt, proto, extra)
         raw = rebuild_raw(str(n.get("raw", "")), name)
         out.append({"name": name, "raw": raw, "node": n, "meta": x, "score": s})
     return out
