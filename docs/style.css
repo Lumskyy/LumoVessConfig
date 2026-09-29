@@ -1,0 +1,93 @@
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background: #0c0f14;
+  color: #e8ecf1;
+  line-height: 1.55;
+}
+main {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 32px 20px 60px;
+}
+header h1 {
+  font-size: 34px;
+  margin: 0 0 8px;
+  font-weight: 650;
+}
+h2 {
+  font-size: 21px;
+  margin: 34px 0 10px;
+  font-weight: 620;
+}
+.muted {
+  color: #9aa5b1;
+}
+ul {
+  padding-left: 20px;
+}
+li {
+  margin: 8px 0;
+}
+button {
+  margin-left: 10px;
+  padding: 5px 12px;
+  border: 1px solid #2a3340;
+  background: #161c26;
+  color: #e8ecf1;
+  border-radius: 8px;
+  cursor: pointer;
+}
+button:hover {
+  background: #1e2634;
+}
+code {
+  background: #161c26;
+  padding: 3px 7px;
+  border-radius: 6px;
+  font-size: 13px;
+  word-break: break-all;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 12px;
+}
+.grid > div {
+  background: #121823;
+  border: 1px solid #232c3b;
+  border-radius: 12px;
+  padding: 14px;
+}
+.num {
+  font-size: 26px;
+  font-weight: 650;
+}
+.lbl {
+  color: #9aa5b1;
+  font-size: 13px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+th, td {
+  text-align: left;
+  padding: 8px 10px;
+  border-bottom: 1px solid #232c3b;
+  font-size: 14px;
+}
+th {
+  color: #9aa5b1;
+  font-weight: 600;
+}
+a {
+  color: #8fb8ff;
+}
+@media (max-width: 640px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

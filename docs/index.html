@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LumoVessConfig</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+<header>
+<h1>LumoVessConfig</h1>
+<p>VLESS lists for Happ, refreshed every 3 hours. Checked three times, deduplicated, sorted by speed and stability.</p>
+<p class="muted">Updated <span id="updated">soon</span>. Full probe <span id="fullprobe">unknown</span>.</p>
+</header>
+<section>
+<h2>Links for Happ</h2>
+<p>Paste one into Happ as a subscription.</p>
+<ul id="links">
+<li><span>Elite, strictest 80</span> <button data-copy="https://raw.githubusercontent.com/lumskyy/LumoVessConfig/main/output/happ-elite.txt">Copy</button></li>
+<li><span>Best, top 120</span> <button data-copy="https://raw.githubusercontent.com/lumskyy/LumoVessConfig/main/output/happ-best.txt">Copy</button></li>
+<li><span>All alive, up to 800</span> <button data-copy="https://raw.githubusercontent.com/lumskyy/LumoVessConfig/main/output/happ-all.txt">Copy</button></li>
+<li><span>VLESS only</span> <button data-copy="https://raw.githubusercontent.com/lumskyy/LumoVessConfig/main/output/happ-vless.txt">Copy</button></li>
+<li><span>Low ping for games</span> <button data-copy="https://raw.githubusercontent.com/lumskyy/LumoVessConfig/main/output/happ-gaming.txt">Copy</button></li>
+</ul>
+<p>Country files follow this shape. Swap the code for the country you want.</p>
+<p><code id="countrypattern">https://raw.githubusercontent.com/lumskyy/LumoVessConfig/main/output/countries/JP.txt</code> <button id="copypattern">Copy</button></p>
+</section>
+<section>
+<h2>Right now</h2>
+<div class="grid">
+<div><div class="num" id="alive">0</div><div class="lbl">alive after three rounds</div></div>
+<div><div class="num" id="elite">0</div><div class="lbl">elite, no leak</div></div>
+<div><div class="num" id="best">0</div><div class="lbl">marked best</div></div>
+<div><div class="num" id="gaming">0</div><div class="lbl">low ping game set</div></div>
+<div><div class="num" id="countries">0</div><div class="lbl">countries</div></div>
+<div><div class="num" id="mtcp">0</div><div class="lbl">median tcp, ms</div></div>
+<div><div class="num" id="mhttp">0</div><div class="lbl">median http, ms</div></div>
+</div>
+<p class="muted">Pulled <span id="totalin">0</span>, parsed <span id="parsed">0</span>, sources ok <span id="sources">0</span>.</p>
+</section>
+<section>
+<h2>Other clients</h2>
+<p>Clash Verge and Clash Meta read clash.yaml. sing-box reads singbox.json. v2rayNG, NekoBox, Streisand and Shadowrocket read v2ray.txt or any Happ file as plain text.</p>
+<ul>
+<li><span>Clash</span> <button data-copy="https://raw.githubusercontent.com/lumskyy/LumoVessConfig/main/output/clash.yaml">Copy</button></li>
+<li><span>sing-box</span> <button data-copy="https://raw.githubusercontent.com/lumskyy/LumoVessConfig/main/output/singbox.json">Copy</button></li>
+<li><span>v2ray base64</span> <button data-copy="https://raw.githubusercontent.com/lumskyy/LumoVessConfig/main/output/v2ray.txt">Copy</button></li>
+</ul>
+</section>
+<section>
+<h2>By country</h2>
+<p>Each file holds that country only, fastest first. Poland, Russia and Ukraine appear here whenever their nodes survive the hour.</p>
+<table>
+<thead><tr><th>Code</th><th>Nodes</th><th>File</th></tr></thead>
+<tbody id="ctable"></tbody>
+</table>
+</section>
+<section>
+<h2>How nodes get picked</h2>
+<p>Three rounds run about half a minute apart. TCP open time counts every round. TLS handshake counts where the node uses it. Where sing-box is present, Google generate_204, Cloudflare trace, an IP echo and a headers echo go through the node itself.</p>
+<p>A keeper answers in at least two rounds, keeps its exit IP off the checker IP, and leaves no checker address in headers. Google plus Cloudflare answers lift the score. Reality with Vision ranks above plain transports at equal speed because it survives DPI better in practice.</p>
+<p>Elite is a smaller file with harder rules: all three rounds green, both Google probes plus Cloudflare answering, HTTP median under 800 ms, TCP spread under 250 ms between rounds. The spread check drops nodes that freeze for a moment and recover, since those ruin games and calls even with a good median.</p>
+<p>Free ranges still get flagged by Cloudflare and game filters, so Happ retests on your side. When a best node slows down, the next one in the file usually behaves better on that route.</p>
+</section>
+<footer>
+<p class="muted">Lists refresh at minute 17 every 3 hours. Sources are open subscriptions. Nothing here can promise no logs on someone else server.</p>
+<p class="muted">LumoVessConfig by lumskyy, CC BY-SA 4.0. Keep the nick on every copy or fork.</p>
+</footer>
+</main>
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 560" width="320" height="560">
+<rect x="0" y="0" width="320" height="560" rx="28" fill="#0c0f14" stroke="#2a3340" stroke-width="4"/>
+<rect x="28" y="24" width="264" height="40" rx="10" fill="#161c26"/>
+<g font-family="system-ui, Arial, sans-serif" font-size="17" fill="#e8ecf1">
+<text x="48" y="51">LumoVessConfig</text>
+<rect x="28" y="84" width="264" height="52" rx="10" fill="#1a2436"/>
+<text x="44" y="117">🏆 ELITE · 🇵🇱 Poland 01</text>
+<rect x="28" y="144" width="264" height="52" rx="10" fill="#161c26"/>
+<text x="44" y="177">⭐ BEST · 🇩🇪 Germany 01</text>
+<rect x="28" y="204" width="264" height="52" rx="10" fill="#161c26"/>
+<text x="44" y="237">🎮 GAME · 🇳🇱 Netherlands</text>
+<rect x="28" y="264" width="264" height="52" rx="10" fill="#161c26"/>
+<text x="44" y="297">🇯🇵 Japan · 04 · 182ms</text>
+<rect x="28" y="324" width="264" height="52" rx="10" fill="#161c26"/>
+<text x="44" y="357">🇺🇦 Ukraine · 02 · 210ms</text>
+<rect x="28" y="384" width="264" height="52" rx="10" fill="#161c26"/>
+<text x="44" y="417">🇷🇺 Russia · 05 · 244ms</text>
+</g>
+<g font-family="system-ui, Arial, sans-serif" font-size="15" fill="#9aa5b1">
+<text x="48" y="470">ping 142ms · vless</text>
+<text x="48" y="496">reality · no leak</text>
+<text x="48" y="522">updated hourly</text>
+</g>
+</svg>
