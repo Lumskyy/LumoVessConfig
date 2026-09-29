@@ -1,1 +1,0 @@
-vless://0250424c-ae75-4b6b-890f-3fe26fae36c3@www.wto.org:8443?security=tls&type=ws&path=%2Fstatic%2Fmedia%2Fvideo-chunk.f4v&host=jp.520785.xyz&packetEncoding=xudp&sni=jp.520785.xyz&fp=edge#Japan%20%C2%B7%2001%20%C2%B7%20479ms%20%C2%B7%20VLESS%20TLS%20WS
