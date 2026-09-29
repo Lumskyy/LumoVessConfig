@@ -98,3 +98,14 @@ def test_gaming_needs_udp_in_full_mode():
     live = (4, {"node": {"host": "2.2.2.2", "port": 443, "id": "b", "proto": "vless", "country": "US"}, "tcp_ms": 200, "rounds_ok": 3, "udp_ok": 2})
     assert pick_gaming([mute, live], True) == [live]
     assert pick_gaming([mute, live], False) == [live, mute]
+
+
+def test_rank_all_full_suite():
+    from src.rank import rank_all
+    ok_node = {"node": {"host": "1.1.1.1", "port": 443, "id": "a", "country": "PL", "proto": "vless", "security": "reality"}, "rounds_ok": 3, "leak": False, "full": True, "exit_ip": "9.9.9.9", "google": 1, "cf": 1, "tcp_ms": 120, "http_ms": 300, "tcp_spread": 40, "http_spread": 90, "udp_ms": 200, "udp_spread": 50, "udp_ok": 2}
+    no_udp = dict(ok_node, udp_ok=0, udp_ms=0)
+    no_cf = dict(ok_node, cf=0)
+    tcp_only = dict(ok_node, full=False, google=0, cf=0, udp_ok=0, http_ms=0)
+    alive, has_full = rank_all([no_udp, no_cf, tcp_only, ok_node])
+    assert has_full is True
+    assert [x["node"]["host"] for _, x in alive] == ["1.1.1.1"]

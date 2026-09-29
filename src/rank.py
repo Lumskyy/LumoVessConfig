@@ -100,8 +100,15 @@ def rank_all(checked):
             continue
         if float(x.get("tcp_ms", 9999)) > 1200:
             continue
-        if has_full and not x.get("full"):
-            continue
+        if has_full:
+            if not x.get("full"):
+                continue
+            if int(x.get("google", 0)) < 1:
+                continue
+            if int(x.get("cf", 0)) < 1:
+                continue
+            if int(x.get("udp_ok", 0)) < 1:
+                continue
         alive.append((s, x))
     if not alive:
         for s, x in items:

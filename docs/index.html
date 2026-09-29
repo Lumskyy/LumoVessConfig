@@ -70,7 +70,8 @@
 <section>
 <h2>How nodes get picked</h2>
 <p>Three rounds run about half a minute apart. TCP open time counts every round. TLS handshake counts where the node uses it. Where sing-box is present, Google generate_204, Cloudflare trace, an IP echo and a headers echo go through the node itself.</p>
-<p>A keeper answers in at least two rounds, keeps its exit IP off the checker IP, and leaves no checker address in headers. Google plus Cloudflare answers lift the score. Reality with Vision ranks above plain transports at equal speed because it survives DPI better in practice.</p>
+<p>A keeper answers in at least two rounds, keeps its exit IP off the checker IP, and leaves no checker address in headers. On full runs Google and Cloudflare must both answer through the node plus at least one UDP query, otherwise it ships nowhere. Reality with Vision ranks above plain transports at equal speed because it survives DPI better in practice.</p>
+<p>The milliseconds in names come from the check runner. Happ measures from your machine, so its numbers differ, and n/a means the node stays silent on your network. Take the next row or refresh the subscription.</p>
 <p>Elite is a smaller file with harder rules: all three rounds green, both Google probes plus Cloudflare answering, HTTP median under 800 ms, TCP spread under 250 ms between rounds. The spread check drops nodes that freeze for a moment and recover, since those ruin games and calls even with a good median.</p>
 <p>Free ranges still get flagged by Cloudflare and game filters, so Happ retests on your side. When a best node slows down, the next one in the file usually behaves better on that route.</p>
 </section>

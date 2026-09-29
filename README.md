@@ -69,6 +69,10 @@ Game files and country files solve narrower problems. The game file holds low pi
 
 When nothing connects, refresh the subscription first. Free nodes die between hours, and Happ may hold yesterday evening addresses. After refresh, step down one tier: elite to best, best to the closest country file.
 
+Why Happ shows n/a
+
+The milliseconds in names come from the check runner, a machine in a datacenter. Happ measures from your own machine, across your own provider. These are different roads, so the numbers never match one to one. When Happ shows n/a, the node does not answer from your network at all. Usually the provider blocks that address, or the password died while TCP still opens, or the node drowns in users. Take the next row. Nodes tagged Reality+Vision survive provider filters best, and nearby exits like Russia, Poland, Finland, Germany or the Netherlands answer most often. Refreshing the subscription replaces the dead rows with the next batch.
+
 What the names mean
 
 Every line gets a name with the full country name, so the list reads well in Happ on any system. Flag emoji stay out on purpose: Windows draws them as plain letter pairs, which doubles the country code and looks broken. The first symbol tells you the tier.
@@ -103,7 +107,7 @@ Clash Verge and Clash Meta read clash.yaml, which carries Lumo-Auto and Lumo-Sel
 
 How the check works
 
-Three rounds run with a pause between them. Round one opens TCP and records the time. Round two completes TLS where the node asks for it. Round three pushes real requests through sing-box: Google generate_204 over http and https, Cloudflare trace, an IP echo, a headers echo, and three DNS queries over UDP to public resolvers. The UDP part exists for games, voice calls and plain DNS, which all ride on UDP while TCP tests say nothing about it. A DNS answer only counts when it comes back with the same transaction id it went out with. A node counts as alive when TCP opens in at least two rounds and the HTTP probes answer without exposing the checker IP. Exit IP has to differ from the direct IP.
+Three rounds run with a pause between them. Round one opens TCP and records the time. Round two completes TLS where the node asks for it. Round three pushes real requests through sing-box: Google generate_204 over http and https, Cloudflare trace, an IP echo, a headers echo, and three DNS queries over UDP to public resolvers. The UDP part exists for games, voice calls and plain DNS, which all ride on UDP while TCP tests say nothing about it. A DNS answer only counts when it comes back with the same transaction id it went out with. A node counts as alive when TCP opens in at least two rounds and the HTTP probes answer without exposing the checker IP. Exit IP has to differ from the direct IP. On full-probe runs the bar sits higher: Google and Cloudflare must both answer through the node, and at least one UDP DNS query must come back. A node that passes TCP but fails any of these reaches no file at all, since games and many apps need the full set.
 
 Elite adds the hard rules from the section above on top of this base. Overload cannot be read off a free node directly, so consistency across three spaced rounds stands in for it, and Happ url-test rechecks every few minutes on your side anyway. Without the sing-box binary the runner falls back to strict TCP under 350 ms with full rounds, and the site marks that run as tcp only. If a run finds zero alive nodes, it keeps the previous files and only updates the stats, so Happ never gets an empty list.
 
