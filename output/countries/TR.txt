@@ -1,0 +1,1 @@
+vless://V2XNET@199.232.78.105:443?security=tls&type=xhttp&path=%2F&host=imcreeprddde43e.global.ssl.fastly.net&packetEncoding=xudp&alpn=h2&sni=ssl.fastly.com&fp=chrome&mode=auto&extra=%7B%22xPaddingBytes%22%3A%22100-1000%22%7D&encryption=none#Turkey%20%C2%B7%2001%20%C2%B7%201ms%20%C2%B7%20VLESS%20TLS%20XHTTP

@@ -1,1 +1,0 @@
-vless://80f72027-2201-4541-9abb-7070c9b0869e@pol2.serverslocal.ru:443?encryption=none&flow=xtls-rprx-vision&security=reality&sni=pol2.serverslocal.ru&fp=random&pbk=FdnIXseNFtVqgGO7-GyAFgQ4GUqzuWz5jywOmuZM6To&sid=dd6a0fb60cd7b2fc&type=tcp#Russia%20%C2%B7%2001%20%C2%B7%20123ms%20%C2%B7%20VLESS%20Reality%2BVision
