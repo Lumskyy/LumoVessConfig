@@ -1,1 +1,1 @@
-vless://556d2515-b565-4519-9ad0-9ad6f792b6c1@104.18.12.149:8880?path=/api&security=none&encryption=none&host=prossh.octarpmta.ir&type=httpupgrade#Switzerland%20%C2%B7%2001%20%C2%B7%205ms%20%C2%B7%20VLESS%20HTTPUPGRADE
+vless://556d2515-b565-4519-9ad0-9ad6f792b6c1@104.18.12.149:8880?path=/api&security=none&encryption=none&host=prossh.octarpmta.ir&type=httpupgrade#Switzerland%20%C2%B7%2001%20%C2%B7%203ms%20%C2%B7%20VLESS%20HTTPUPGRADE

@@ -1,1 +1,1 @@
-vless://d25ba473-5b05-48bb-b048-e82844e2ae39@104.16.100.66:8880?security=none&type=ws&path=%2Fpyip%3DProxyIP.JP.CMLiussss.net&host=misty-recipe-be74.271.workers.dev&packetEncoding=xudp&encryption=none#Japan%20%C2%B7%2001%20%C2%B7%207ms%20%C2%B7%20VLESS%20WS
+vless://d25ba473-5b05-48bb-b048-e82844e2ae39@104.16.100.66:8880?security=none&type=ws&path=%2Fpyip%3DProxyIP.JP.CMLiussss.net&host=misty-recipe-be74.271.workers.dev&packetEncoding=xudp&encryption=none#Japan%20%C2%B7%2001%20%C2%B7%203ms%20%C2%B7%20VLESS%20WS
