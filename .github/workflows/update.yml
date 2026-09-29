@@ -1,0 +1,50 @@
+name: Lumo hourly
+on:
+  schedule:
+    - cron: "17 */3 * * *"
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+permissions:
+  contents: write
+concurrency:
+  group: lumo-hourly
+  cancel-in-progress: true
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install sing-box
+        continue-on-error: true
+        run: |
+          SINGBOX_VERSION=1.12.1
+          curl -L -o singbox.tar.gz https://github.com/SagerNet/sing-box/releases/download/v${SINGBOX_VERSION}/sing-box-${SINGBOX_VERSION}-linux-amd64.tar.gz
+          tar -xzf singbox.tar.gz
+          sudo mv sing-box-${SINGBOX_VERSION}-linux-amd64/sing-box /usr/local/bin/sing-box
+          sing-box version
+      - name: Install deps
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run tests
+        run: |
+          python -c "import tests.test_parse as t; t.test_vless_basic(); t.test_dedupe_drops_repeat(); t.test_flags_and_aliases(); t.test_elite_keeps_stable_only()"
+      - name: Run pipeline
+        run: |
+          python -m src.run
+        env:
+          LUMO_ROUNDS: "3"
+          LUMO_DELAY: "25"
+          LUMO_PREFILTER: "800"
+      - name: Commit output
+        run: |
+          git config user.name "lumo-bot"
+          git config user.email "lumo-bot@users.noreply.github.com"
+          git add output docs/data.json assets/badges
+          git diff --cached --quiet || git commit -m "Update lists"
+          git push
