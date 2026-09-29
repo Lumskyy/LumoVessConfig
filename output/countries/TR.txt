@@ -1,0 +1,1 @@
+vless://cbbc93ef-6d35-463a-a856-64265c42e66d@93.190.9.60:3090?mode=multi&security=none&encryption=none&type=grpc&serviceName=vless#Turkey%20%C2%B7%2001%20%C2%B7%2098ms%20%C2%B7%20VLESS

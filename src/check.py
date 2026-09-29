@@ -1,9 +1,11 @@
 import asyncio
 import json
 import os
+import random
 import shutil
 import socket
 import ssl
+import struct
 import subprocess
 import tempfile
 import time
@@ -113,6 +115,91 @@ async def tls_rtt(host, port, sni="", timeout=8):
         return await asyncio.to_thread(blocking)
     except Exception:
         return None
+
+
+def build_dns_query():
+    txid = random.randint(1, 65534)
+    header = struct.pack(">HHHHHH", txid, 256, 1, 0, 0, 0)
+    qname = b""
+    for part in ["www", "gstatic", "com"]:
+        piece = part.encode("ascii")
+        qname = qname + bytes([len(piece)]) + piece
+    qname = qname + b"\x00"
+    return txid, header + qname + struct.pack(">HH", 1, 1)
+
+
+def parse_dns_ok(data, txid):
+    try:
+        if len(data) < 12:
+            return False
+        rid, flags, qd, an, _, _ = struct.unpack(">HHHHHH", data[:12])
+        if rid != txid:
+            return False
+        if not flags & 32768:
+            return False
+        if flags & 15:
+            return False
+        return an >= 1
+    except Exception:
+        return False
+
+
+def udp_dns_attempts(host, mixed, attempts=3, timeout=2.5):
+    ms = []
+    ok = 0
+    try:
+        tcp_sock = socket.create_connection((host, mixed), timeout=5)
+    except Exception:
+        return ms, ok
+    try:
+        tcp_sock.settimeout(5)
+        tcp_sock.sendall(b"\x05\x01\x00")
+        head = b""
+        while len(head) < 2:
+            chunk = tcp_sock.recv(2 - len(head))
+            if not chunk:
+                return ms, ok
+            head = head + chunk
+        if head != b"\x05\x00":
+            return ms, ok
+        tcp_sock.sendall(b"\x05\x03\x00\x01\x00\x00\x00\x00\x00\x00")
+        resp = b""
+        while len(resp) < 10:
+            chunk = tcp_sock.recv(10 - len(resp))
+            if not chunk:
+                return ms, ok
+            resp = resp + chunk
+        relay = struct.unpack(">H", resp[8:10])[0]
+        udp_sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        try:
+            udp_sock.settimeout(timeout)
+            targets = ["8.8.8.8", "1.1.1.1", "8.8.8.8"]
+            for i in range(attempts):
+                txid, pkt = build_dns_query()
+                dst = targets[i % len(targets)]
+                parts = dst.split(".")
+                header = b"\x00\x00\x00\x01" + bytes([int(parts[0]), int(parts[1]), int(parts[2]), int(parts[3])]) + struct.pack(">H", 53)
+                t0 = time.monotonic()
+                try:
+                    udp_sock.sendto(header + pkt, ("127.0.0.1", relay))
+                    data, _ = udp_sock.recvfrom(512)
+                    dt = (time.monotonic() - t0) * 1000.0
+                    if len(data) > 10 and parse_dns_ok(data[10:], txid):
+                        ms.append(dt)
+                        ok = ok + 1
+                except Exception:
+                    pass
+        finally:
+            try:
+                udp_sock.close()
+            except Exception:
+                pass
+    finally:
+        try:
+            tcp_sock.close()
+        except Exception:
+            pass
+    return ms, ok
 
 
 def query_of(raw):
@@ -241,7 +328,7 @@ async def probe_with_singbox(node, binpath, timeout=18):
                 await asyncio.sleep(0.2)
         proxy = "http://127.0.0.1:" + str(mixed)
         proxies = {"http://": proxy, "https://": proxy}
-        res = {"http_ms": [], "google": 0, "cf": 0, "exit_ip": "", "leak": False, "trace": ""}
+        res = {"http_ms": [], "google": 0, "cf": 0, "exit_ip": "", "leak": False, "trace": "", "udp_ms": [], "udp_ok": 0}
         try:
             async with httpx.AsyncClient(proxies=proxies, timeout=timeout, follow_redirects=True, trust_env=False) as c:
                 t0 = time.monotonic()
@@ -283,6 +370,12 @@ async def probe_with_singbox(node, binpath, timeout=18):
                         res["headers_body"] = ""
                 except Exception:
                     res["headers_body"] = ""
+                try:
+                    udp_ms, udp_ok = await asyncio.to_thread(udp_dns_attempts, "127.0.0.1", mixed)
+                    res["udp_ms"] = udp_ms
+                    res["udp_ok"] = udp_ok
+                except Exception:
+                    pass
         finally:
             try:
                 proc.terminate()
@@ -312,7 +405,7 @@ async def check_round(nodes, public_ip, binpath, limit=64):
             host = str(n.get("host", ""))
             port = int(n.get("port", 443))
             key = str(n.get("host", "")).lower() + ":" + str(port) + ":" + str(n.get("id", ""))[:8]
-            r = {"tcp": None, "tls": None, "http_ms": [], "google": 0, "cf": 0, "exit_ip": "", "leak": False}
+            r = {"tcp": None, "tls": None, "http_ms": [], "google": 0, "cf": 0, "exit_ip": "", "leak": False, "udp_ms": [], "udp_ok": 0}
             r["tcp"] = await tcp_rtt(host, port, timeout=6)
             sec = str(n.get("security", "none") or "none").lower()
             if sec in ("tls", "reality"):
@@ -321,6 +414,8 @@ async def check_round(nodes, public_ip, binpath, limit=64):
                 try:
                     full = await probe_with_singbox(n, binpath, timeout=16)
                     r["http_ms"] = full.get("http_ms", [])
+                    r["udp_ms"] = full.get("udp_ms", [])
+                    r["udp_ok"] = full.get("udp_ok", 0)
                     r["google"] = full.get("google", 0)
                     r["cf"] = full.get("cf", 0)
                     r["exit_ip"] = full.get("exit_ip", "")
@@ -341,7 +436,7 @@ async def check_round(nodes, public_ip, binpath, limit=64):
 async def triple_check(nodes, rounds=3, delay=25, prefilter=1400, limit=64):
     nodes = list(nodes)
     if not nodes:
-        return [], {"singbox": False, "fallback_tcp": False, "tcp_ok": 0, "full_ok": 0, "leaked": 0}
+        return [], {"singbox": False, "fallback_tcp": False, "tcp_ok": 0, "full_ok": 0, "udp_ok": 0, "leaked": 0}
     public_ip = await get_public_ip()
     binpath = singbox_bin()
     singbox_initial = bool(binpath)
@@ -361,11 +456,11 @@ async def triple_check(nodes, rounds=3, delay=25, prefilter=1400, limit=64):
     scored.sort(key=lambda x: x[0])
     cand = [n for _, n in scored[:prefilter]] if scored else []
     if not cand:
-        return [], {"singbox": bool(binpath), "fallback_tcp": False, "tcp_ok": 0, "full_ok": 0, "leaked": 0}
+        return [], {"singbox": bool(binpath), "fallback_tcp": False, "tcp_ok": 0, "full_ok": 0, "udp_ok": 0, "leaked": 0}
     agg = {}
     for n in cand:
         key = str(n.get("host", "")).lower() + ":" + str(n.get("port", "")) + ":" + str(n.get("id", ""))[:12]
-        agg[key] = {"node": n, "tcp": [], "tls": [], "http": [], "google": 0, "cf": 0, "exit": "", "leak": False, "rounds_ok": 0}
+        agg[key] = {"node": n, "tcp": [], "tls": [], "http": [], "udp": [], "udp_ok": 0, "google": 0, "cf": 0, "exit": "", "leak": False, "rounds_ok": 0}
     for i in range(rounds):
         res = await check_round(cand, public_ip, binpath, limit=limit)
         for n in cand:
@@ -383,6 +478,9 @@ async def triple_check(nodes, rounds=3, delay=25, prefilter=1400, limit=64):
                 a["tls"].append(r["tls"])
             if r.get("http_ms"):
                 a["http"].extend(r["http_ms"])
+            if r.get("udp_ms"):
+                a["udp"].extend(r["udp_ms"])
+            a["udp_ok"] = a["udp_ok"] + int(r.get("udp_ok", 0) or 0)
             a["google"] = a["google"] + int(r.get("google", 0) or 0)
             a["cf"] = a["cf"] + int(r.get("cf", 0) or 0)
             if r.get("exit_ip"):
@@ -412,13 +510,18 @@ async def triple_check(nodes, rounds=3, delay=25, prefilter=1400, limit=64):
         n = a["node"]
         tcps = sorted(a["tcp"])
         https = sorted(a["http"])
+        udps = sorted(a["udp"])
         tcp_spread = (tcps[-1] - tcps[0]) if len(tcps) > 1 else 0
         http_spread = (https[-1] - https[0]) if len(https) > 1 else 0
+        udp_spread = (udps[-1] - udps[0]) if len(udps) > 1 else 0
         final.append({
             "node": n,
             "tcp_ms": tcps[len(tcps) // 2] if tcps else 9999,
             "tls_ms": sorted(a["tls"])[len(a["tls"]) // 2] if a["tls"] else 0,
             "http_ms": https[len(https) // 2] if https else 0,
+            "udp_ms": udps[len(udps) // 2] if udps else 0,
+            "udp_spread": udp_spread,
+            "udp_ok": a["udp_ok"],
             "tcp_spread": tcp_spread,
             "http_spread": http_spread,
             "google": a["google"],
@@ -428,12 +531,14 @@ async def triple_check(nodes, rounds=3, delay=25, prefilter=1400, limit=64):
             "rounds_ok": a["rounds_ok"],
             "full": bool(a["http"]),
         })
-    diag = {"singbox": singbox_initial, "fallback_tcp": fallback_used, "tcp_ok": 0, "full_ok": 0, "leaked": 0}
+    diag = {"singbox": singbox_initial, "fallback_tcp": fallback_used, "tcp_ok": 0, "full_ok": 0, "udp_ok": 0, "leaked": 0}
     for key, a in agg.items():
         if a["tcp"]:
             diag["tcp_ok"] = diag["tcp_ok"] + 1
         if a["http"]:
             diag["full_ok"] = diag["full_ok"] + 1
+        if a["udp"]:
+            diag["udp_ok"] = diag["udp_ok"] + 1
         if a["leak"]:
             diag["leaked"] = diag["leaked"] + 1
     return final, diag

@@ -71,6 +71,7 @@ async function init() {
   setText("countries", data.countries || 0);
   setText("mtcp", data.median_tcp_ms || 0);
   setText("mhttp", data.median_http_ms || 0);
+  setText("mudp", data.median_udp_ms || 0);
   setText("totalin", data.total_in || 0);
   setText("parsed", data.parsed || 0);
   setText("sources", String(data.sources_ok || 0) + " of " + String(data.sources_total || 0));

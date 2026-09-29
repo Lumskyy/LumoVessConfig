@@ -182,6 +182,7 @@ def write_all(best, elite, gaming, groups, all_items, stats):
 def build_stats(total_in, parsed, checked_n, alive_pairs, best, elite, gaming, groups, sources_ok, sources_total, has_full, diag=None):
     tcps = [float(x.get("tcp_ms", 9999)) for _, x in alive_pairs if float(x.get("tcp_ms", 9999)) < 9999]
     https = [float(x.get("http_ms", 0)) for _, x in alive_pairs if float(x.get("http_ms", 0) or 0) > 0]
+    udps = [float(x.get("udp_ms", 0)) for _, x in alive_pairs if float(x.get("udp_ms", 0) or 0) > 0]
     counts = {}
     for cc, items in groups.items():
         counts[cc] = len(items)
@@ -199,6 +200,7 @@ def build_stats(total_in, parsed, checked_n, alive_pairs, best, elite, gaming, g
         "country_counts": dict(top),
         "median_tcp_ms": int(median(tcps)) if tcps else 0,
         "median_http_ms": int(median(https)) if https else 0,
+        "median_udp_ms": int(median(udps)) if udps else 0,
         "sources_ok": sources_ok,
         "sources_total": sources_total,
         "full_probe": bool(has_full),
@@ -206,6 +208,7 @@ def build_stats(total_in, parsed, checked_n, alive_pairs, best, elite, gaming, g
         "fallback_tcp": bool((diag or {}).get("fallback_tcp", False)),
         "tcp_ok": int((diag or {}).get("tcp_ok", 0)),
         "full_ok": int((diag or {}).get("full_ok", 0)),
+        "udp_ok": int((diag or {}).get("udp_ok", 0)),
         "leaked": int((diag or {}).get("leaked", 0)),
         "error": str((diag or {}).get("error", "")),
     }

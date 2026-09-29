@@ -1,5 +1,6 @@
 from src.parse import parse_link, dedupe, guess_country
 from src.rank import pick_elite
+import struct
 
 
 def test_vless_basic():
@@ -29,8 +30,8 @@ def test_flags_and_aliases():
 
 
 def test_elite_keeps_stable_only():
-    good = (10, {"node": {"host": "1.1.1.1", "port": 443, "id": "a", "country": "PL", "proto": "vless"}, "rounds_ok": 3, "leak": False, "full": True, "exit_ip": "9.9.9.9", "google": 2, "cf": 1, "tcp_ms": 120, "http_ms": 300, "tcp_spread": 40, "http_spread": 90})
-    shaky = (99, {"node": {"host": "2.2.2.2", "port": 443, "id": "b", "country": "DE", "proto": "vless"}, "rounds_ok": 3, "leak": False, "full": True, "exit_ip": "8.8.8.8", "google": 2, "cf": 1, "tcp_ms": 100, "http_ms": 250, "tcp_spread": 900, "http_spread": 90})
+    good = (10, {"node": {"host": "1.1.1.1", "port": 443, "id": "a", "country": "PL", "proto": "vless", "security": "reality"}, "rounds_ok": 3, "leak": False, "full": True, "exit_ip": "9.9.9.9", "google": 2, "cf": 1, "tcp_ms": 120, "http_ms": 300, "tcp_spread": 40, "http_spread": 90, "udp_ms": 200, "udp_spread": 50, "udp_ok": 3})
+    shaky = (99, {"node": {"host": "2.2.2.2", "port": 443, "id": "b", "country": "DE", "proto": "vless", "security": "reality"}, "rounds_ok": 3, "leak": False, "full": True, "exit_ip": "8.8.8.8", "google": 2, "cf": 1, "tcp_ms": 100, "http_ms": 250, "tcp_spread": 900, "http_spread": 90, "udp_ms": 200, "udp_spread": 50, "udp_ok": 3})
     leaked = (99, {"node": {"host": "3.3.3.3", "port": 443, "id": "c", "country": "NL", "proto": "vless"}, "rounds_ok": 3, "leak": True, "full": True, "exit_ip": "7.7.7.7", "google": 2, "cf": 1, "tcp_ms": 90, "http_ms": 200, "tcp_spread": 10, "http_spread": 10})
     out = pick_elite([shaky, leaked, good], 3, True)
     assert len(out) == 1
@@ -55,3 +56,23 @@ def test_generic_parses_strict():
     assert n["host"] == "1.2.3.4"
     assert n["port"] == 443
     assert n["proto"] == "hysteria2"
+
+
+def test_dns_packet_roundtrip():
+    from src.check import build_dns_query, parse_dns_ok
+    txid, pkt = build_dns_query()
+    assert len(pkt) > 12
+    answer = struct.pack(">HHHHHH", txid, 0x8180, 1, 1, 0, 0) + pkt[12:] + b"\xc0\x0c\x00\x01\x00\x01\x00\x00\x00\x3c\x00\x04\x08\x08\x08\x08"
+    assert parse_dns_ok(answer, txid) is True
+    assert parse_dns_ok(answer, txid + 1) is False
+    assert parse_dns_ok(b"\x00\x01", txid) is False
+
+
+def test_elite_needs_udp_and_vless_tls():
+    base = {"rounds_ok": 3, "leak": False, "full": True, "exit_ip": "9.9.9.9", "google": 2, "cf": 1, "tcp_ms": 120, "http_ms": 300, "tcp_spread": 40, "http_spread": 90, "udp_ms": 200, "udp_spread": 50, "udp_ok": 3}
+    good = (10, dict(base, node={"host": "1.1.1.1", "port": 443, "id": "a", "country": "PL", "proto": "vless", "security": "reality"}))
+    no_udp = (99, dict(base, udp_ok=0, udp_ms=0, node={"host": "2.2.2.2", "port": 443, "id": "b", "country": "DE", "proto": "vless", "security": "reality"}))
+    plain = (99, dict(base, node={"host": "3.3.3.3", "port": 443, "id": "c", "country": "NL", "proto": "ss", "security": "none"}))
+    out = pick_elite([no_udp, plain, good], 3, True)
+    assert len(out) == 1
+    assert out[0][1]["node"]["host"] == "1.1.1.1"

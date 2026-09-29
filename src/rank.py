@@ -32,6 +32,11 @@ def score_item(x, has_full):
         s = s + 18
     elif http and http <= 800:
         s = s + 10
+    uo = int(x.get("udp_ok", 0))
+    if uo >= 2:
+        s = s + 12
+    elif uo >= 1:
+        s = s + 5
     n = x.get("node", {})
     proto = str(n.get("proto", "")).lower()
     sec = str(n.get("security", "") or "").lower()
@@ -126,7 +131,7 @@ def pick_gaming(alive, limit=150):
         if proto not in ("vless", "trojan", "vmess", "ss", "hysteria2", "tuic"):
             continue
         out.append((s, x))
-    out.sort(key=lambda t: (float(t[1].get("tcp_ms", 9999)), -t[0]))
+    out.sort(key=lambda t: (0 if int(t[1].get("udp_ok", 0)) > 0 else 1, float(t[1].get("tcp_ms", 9999)), -t[0]))
     return out[:limit]
 
 
@@ -137,6 +142,7 @@ def pick_elite(alive, rounds_total, has_full, limit=80, per_country=8):
             continue
         if x.get("leak"):
             continue
+        n = x.get("node", {})
         tcp = float(x.get("tcp_ms", 9999))
         http = float(x.get("http_ms", 0) or 0)
         if has_full:
@@ -151,6 +157,17 @@ def pick_elite(alive, rounds_total, has_full, limit=80, per_country=8):
             if http <= 0 or http > 800:
                 continue
             if tcp > 500:
+                continue
+            if str(n.get("proto", "")).lower() != "vless":
+                continue
+            if str(n.get("security", "") or "").lower() not in ("tls", "reality"):
+                continue
+            if int(x.get("udp_ok", 0)) < 2:
+                continue
+            udp = float(x.get("udp_ms", 0) or 0)
+            if udp <= 0 or udp > 800:
+                continue
+            if float(x.get("udp_spread", 9999)) > 600:
                 continue
         else:
             if tcp > 350:
