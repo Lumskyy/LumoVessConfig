@@ -45,7 +45,7 @@ function setText(id, v) {
   }
 }
 
-var FLAGS = {US:"🇺🇸",JP:"🇯🇵",SG:"🇸🇬",NL:"🇳🇱",DE:"🇩🇪",GB:"🇬🇧",FR:"🇫🇷",CA:"🇨🇦",HK:"🇭🇰",TW:"🇹🇼",KR:"🇰🇷",AU:"🇦🇺",IN:"🇮🇳",BR:"🇧🇷",TR:"🇹🇷",FI:"🇫🇮",SE:"🇸🇪",NO:"🇳🇴",PL:"🇵🇱",IT:"🇮🇹",ES:"🇪🇸",CH:"🇨🇭",AT:"🇦🇹",IE:"🇮🇪",RO:"🇷🇴",UA:"🇺🇦",KZ:"🇰🇿",AE:"🇦🇪",IR:"🇮🇷",RU:"🇷🇺",MY:"🇲🇾",ID:"🇮🇩",TH:"🇹🇭",VN:"🇻🇳",PH:"🇵🇭",MX:"🇲🇽",AR:"🇦🇷",CL:"🇨🇱",CO:"🇨🇴",ZA:"🇿🇦",EG:"🇪🇬",IL:"🇮🇱",GR:"🇬🇷",PT:"🇵🇹",CZ:"🇨🇿",HU:"🇭🇺",DK:"🇩🇰",BE:"🇧🇪",LV:"🇱🇻",LT:"🇱🇹",EE:"🇪🇪",HR:"🇭🇷",RS:"🇷🇸",BG:"🇧🇬",MD:"🇲🇩",GE:"🇬🇪",AM:"🇦🇲",AZ:"🇦🇿",UZ:"🇺🇿"};
+var NAMES = {US:"United States",JP:"Japan",SG:"Singapore",NL:"Netherlands",DE:"Germany",GB:"United Kingdom",FR:"France",CA:"Canada",HK:"Hong Kong",TW:"Taiwan",KR:"South Korea",AU:"Australia",IN:"India",BR:"Brazil",TR:"Turkey",FI:"Finland",SE:"Sweden",NO:"Norway",PL:"Poland",IT:"Italy",ES:"Spain",CH:"Switzerland",AT:"Austria",IE:"Ireland",RO:"Romania",UA:"Ukraine",KZ:"Kazakhstan",AE:"UAE",IR:"Iran",RU:"Russia",MY:"Malaysia",ID:"Indonesia",TH:"Thailand",VN:"Vietnam",PH:"Philippines",MX:"Mexico",AR:"Argentina",CL:"Chile",CO:"Colombia",ZA:"South Africa",EG:"Egypt",IL:"Israel",GR:"Greece",PT:"Portugal",CZ:"Czechia",HU:"Hungary",DK:"Denmark",BE:"Belgium",LV:"Latvia",LT:"Lithuania",EE:"Estonia",HR:"Croatia",RS:"Serbia",BG:"Bulgaria",MD:"Moldova",GE:"Georgia",AM:"Armenia",AZ:"Azerbaijan",UZ:"Uzbekistan"};
 
 async function init() {
   bindCopy();
@@ -87,7 +87,7 @@ async function init() {
     var n = rows[i][1];
     var tr = document.createElement("tr");
     var td1 = document.createElement("td");
-    td1.textContent = (FLAGS[cc] || "🌐") + " " + cc;
+    td1.textContent = NAMES[cc] || cc;
     var td2 = document.createElement("td");
     td2.textContent = n;
     var td3 = document.createElement("td");

@@ -35,3 +35,23 @@ def test_elite_keeps_stable_only():
     out = pick_elite([shaky, leaked, good], 3, True)
     assert len(out) == 1
     assert out[0][1]["node"]["host"] == "1.1.1.1"
+
+
+def test_rejects_lines_with_spaces():
+    assert parse_link("5 @user hysteria2://abc@1.2.3.4:443#tag") is None
+    assert parse_link("vless://11111111-2222-3333-4444-555555555555@203.0.113.10:443?type=tcp&a=b c") is None
+    assert parse_link("just some words :// nothing") is None
+
+
+def test_tag_with_scheme_gets_replaced():
+    n = parse_link("vless://11111111-2222-3333-4444-555555555555@203.0.113.10:443?type=tcp&security=none" + "\u0023AAA://BBB")
+    assert n is not None
+    assert n["tag"] == "203.0.113.10:443"
+
+
+def test_generic_parses_strict():
+    n = parse_link("hy2://secret@1.2.3.4:443#Nice")
+    assert n is not None
+    assert n["host"] == "1.2.3.4"
+    assert n["port"] == 443
+    assert n["proto"] == "hysteria2"

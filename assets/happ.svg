@@ -4,17 +4,17 @@
 <g font-family="system-ui, Arial, sans-serif" font-size="17" fill="#e8ecf1">
 <text x="48" y="51">LumoVessConfig</text>
 <rect x="28" y="84" width="264" height="52" rx="10" fill="#1a2436"/>
-<text x="44" y="117">🏆 ELITE · 🇵🇱 Poland 01</text>
+<text x="44" y="117">🏆 ELITE · Poland 01</text>
 <rect x="28" y="144" width="264" height="52" rx="10" fill="#161c26"/>
-<text x="44" y="177">⭐ BEST · 🇩🇪 Germany 01</text>
+<text x="44" y="177">⭐ BEST · Germany 01</text>
 <rect x="28" y="204" width="264" height="52" rx="10" fill="#161c26"/>
-<text x="44" y="237">🎮 GAME · 🇳🇱 Netherlands</text>
+<text x="44" y="237">🎮 GAME · Netherlands</text>
 <rect x="28" y="264" width="264" height="52" rx="10" fill="#161c26"/>
-<text x="44" y="297">🇯🇵 Japan · 04 · 182ms</text>
+<text x="44" y="297">Japan · 04 · 182ms</text>
 <rect x="28" y="324" width="264" height="52" rx="10" fill="#161c26"/>
-<text x="44" y="357">🇺🇦 Ukraine · 02 · 210ms</text>
+<text x="44" y="357">Ukraine · 02 · 210ms</text>
 <rect x="28" y="384" width="264" height="52" rx="10" fill="#161c26"/>
-<text x="44" y="417">🇷🇺 Russia · 05 · 244ms</text>
+<text x="44" y="417">Russia · 05 · 244ms</text>
 </g>
 <g font-family="system-ui, Arial, sans-serif" font-size="15" fill="#9aa5b1">
 <text x="48" y="470">ping 142ms · vless</text>

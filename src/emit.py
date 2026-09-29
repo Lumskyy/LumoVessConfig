@@ -4,7 +4,7 @@ import os
 import urllib.parse
 import yaml
 from src.rank import rebuild_raw
-from src.parse import FLAGS, NAMES
+from src.parse import NAMES
 from src.util import median, now_iso
 from src.check import build_outbound
 
@@ -12,10 +12,6 @@ from src.check import build_outbound
 def ensure_dirs():
     os.makedirs("output" + os.sep + "countries", exist_ok=True)
     os.makedirs("docs", exist_ok=True)
-
-
-def flag_of(cc):
-    return FLAGS.get((cc or "UN").upper(), "🌐")
 
 
 def short_rtt(x):
@@ -33,10 +29,9 @@ def short_rtt(x):
 def pretty_name(kind, cc, idx, rtt, proto):
     cc = (cc or "UN").upper()
     proto = (proto or "vless").upper()
-    flag = flag_of(cc)
     name = NAMES.get(cc, cc)
     num = str(idx).zfill(2)
-    tail = flag + " " + name + " · " + num + " · " + str(rtt) + "ms · " + proto
+    tail = name + " · " + num + " · " + str(rtt) + "ms · " + proto
     if kind == "elite":
         return "🏆 ELITE · " + tail
     if kind == "best":

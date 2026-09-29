@@ -47,14 +47,14 @@ When nothing connects, refresh the subscription first. Free nodes die between ho
 
 What the names mean
 
-Every line gets a name with a flag, so the list reads well in Happ. The first symbol tells you the tier.
+Every line gets a name with the full country name, so the list reads well in Happ on any system. Flag emoji stay out on purpose: Windows draws them as plain letter pairs, which doubles the country code and looks broken. The first symbol tells you the tier.
 
-    🏆 ELITE · 🇵🇱 Poland · 01 · 142ms · VLESS
-    ⭐ BEST · 🇩🇪 Germany · 01 · 168ms · VLESS
-    🎮 GAME · 🇳🇱 Netherlands · 01 · 188ms · VLESS
-    🇯🇵 Japan · 04 · 182ms · VLESS
+    🏆 ELITE · Poland · 01 · 142ms · VLESS
+    ⭐ BEST · Germany · 01 · 168ms · VLESS
+    🎮 GAME · Netherlands · 01 · 188ms · VLESS
+    Japan · 04 · 182ms · VLESS
 
-After the flag comes the full country name, then the position inside that country, the measured ping and the protocol. Elite and best float to the top of an alphabetical sort.
+After the tier comes the full country name, then the position inside that country, the measured ping and the protocol. Elite and best float to the top of an alphabetical sort.
 
 Countries
 

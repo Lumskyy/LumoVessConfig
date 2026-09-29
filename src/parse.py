@@ -316,19 +316,17 @@ def parse_ss(link):
 
 def parse_generic(link):
     try:
-        for prefix in ("hysteria2://", "hy2://", "tuic://", "vless://", "vmess://", "trojan://", "ss://"):
-            if link.startswith(prefix):
-                break
-        m = re.search(r"@([^/:?]+):(\d+)", link)
-        if not m:
-            m = re.search(r"://([^/:?]+):(\d+)", link)
+        scheme, rest = link.split("://", 1)
+        proto = scheme.lower()
+        if proto == "hy2":
+            proto = "hysteria2"
+        if proto not in ("hysteria2", "tuic"):
+            return None
+        m = re.match(r"(?:[^@/:?]+@)?([^/:?]+):(\d+)", rest)
         if not m:
             return None
         host = m.group(1)
         port = int(m.group(2))
-        proto = link.split("://", 1)[0].lower()
-        if proto == "hy2":
-            proto = "hysteria2"
         tag = host + ":" + str(port)
         if "\u0023" in link:
             frag = link.rsplit("\u0023", 1)[1]
@@ -353,17 +351,28 @@ def parse_generic(link):
 
 def parse_link(link):
     s = (link or "").strip()
+    if not s:
+        return None
+    for ch in [" ", "\t", "\n", "\r"]:
+        if ch in s:
+            return None
+    n = None
     if s.startswith("vless://"):
-        return parse_vless(s)
-    if s.startswith("vmess://"):
-        return parse_vmess(s)
-    if s.startswith("trojan://"):
-        return parse_trojan(s)
-    if s.startswith("ss://"):
-        return parse_ss(s)
-    if s.startswith("hysteria2://") or s.startswith("hy2://") or s.startswith("tuic://"):
-        return parse_generic(s)
-    return None
+        n = parse_vless(s)
+    elif s.startswith("vmess://"):
+        n = parse_vmess(s)
+    elif s.startswith("trojan://"):
+        n = parse_trojan(s)
+    elif s.startswith("ss://"):
+        n = parse_ss(s)
+    elif s.startswith("hysteria2://") or s.startswith("hy2://") or s.startswith("tuic://"):
+        n = parse_generic(s)
+    if n is None:
+        return None
+    tag = str(n.get("tag", "") or "")
+    if "://" in tag:
+        n["tag"] = str(n.get("host", "")) + ":" + str(n.get("port", ""))
+    return n
 
 
 def dedupe(nodes):
