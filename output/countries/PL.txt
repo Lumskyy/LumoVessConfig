@@ -1,1 +1,0 @@
-vless://392fcc7e-b995-11f1-a6b7-1b2272a86bd5@89.218.15.90:10002?path=/vpnjantit&amp;security=tls&amp;encryption=none&amp;insecure=0&amp;host=kz1.vpnjantit.com&amp;type=ws&amp;allowInsecure=0&amp;sni=kz1.vpnjantit.com#Poland%20%C2%B7%2001%20%C2%B7%207ms%20%C2%B7%20VLESS
