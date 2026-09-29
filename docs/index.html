@@ -3,32 +3,39 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>LumoVessConfig</title>
+<title>LumoVessConfig, free VLESS lists for Happ</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <main>
-<header>
+<header class="hero">
+<img src="../assets/logo.svg" alt="LumoVessConfig logo" width="72" height="72">
+<div>
 <h1>LumoVessConfig</h1>
-<p>VLESS lists for Happ, refreshed every 3 hours. Checked three times, deduplicated, sorted by speed and stability.</p>
-<p class="muted">Updated <span id="updated">soon</span>. Full probe <span id="fullprobe">unknown</span>.</p>
+<p>Free VLESS lists for Happ, refreshed every 3 hours. Every node earned its place through three check rounds.</p>
+<p class="pills"><span class="pill">Updated <span id="updated">soon</span></span> <span class="pill">Mode <span id="mode">unknown</span></span></p>
+</div>
 </header>
 <section>
-<h2>Links for Happ</h2>
-<p>Paste one into Happ as a subscription.</p>
-<ul id="links">
-<li><span>Elite, strictest 80</span> <button data-copy="https://raw.githubusercontent.com/lumskyy/LumoVessConfig/main/output/happ-elite.txt">Copy</button></li>
-<li><span>Best, top 120</span> <button data-copy="https://raw.githubusercontent.com/lumskyy/LumoVessConfig/main/output/happ-best.txt">Copy</button></li>
-<li><span>All alive, up to 800</span> <button data-copy="https://raw.githubusercontent.com/lumskyy/LumoVessConfig/main/output/happ-all.txt">Copy</button></li>
-<li><span>VLESS only</span> <button data-copy="https://raw.githubusercontent.com/lumskyy/LumoVessConfig/main/output/happ-vless.txt">Copy</button></li>
-<li><span>Low ping for games</span> <button data-copy="https://raw.githubusercontent.com/lumskyy/LumoVessConfig/main/output/happ-gaming.txt">Copy</button></li>
-</ul>
-<p>Country files follow this shape. Swap the code for the country you want.</p>
-<p><code id="countrypattern">https://raw.githubusercontent.com/lumskyy/LumoVessConfig/main/output/countries/JP.txt</code> <button id="copypattern">Copy</button></p>
+<h2>Start here</h2>
+<p>Pick one link and paste it into Happ as a subscription. Start with elite.</p>
+<div class="cards">
+<div class="card top"><h3>Elite</h3><p>Up to 80 strictest nodes, 8 per country max. VLESS with TLS or Reality, Google twice plus Cloudflare through the node, UDP answered, no leaks.</p><button data-copy="https://raw.githubusercontent.com/lumskyy/LumoVessConfig/main/output/happ-elite.txt">Copy link</button></div>
+<div class="card"><h3>Best</h3><p>Wider top 120 with the same hygiene and softer tolerances. Take it when elite feels thin on your route.</p><button data-copy="https://raw.githubusercontent.com/lumskyy/LumoVessConfig/main/output/happ-best.txt">Copy link</button></div>
+<div class="card"><h3>Game</h3><p>Low ping nodes with working UDP first. Built for play and calls.</p><button data-copy="https://raw.githubusercontent.com/lumskyy/LumoVessConfig/main/output/happ-gaming.txt">Copy link</button></div>
+<div class="card"><h3>All</h3><p>Everything alive, up to 800 nodes. Steady choice for heavy downloads.</p><button data-copy="https://raw.githubusercontent.com/lumskyy/LumoVessConfig/main/output/happ-all.txt">Copy link</button></div>
+<div class="card"><h3>VLESS only</h3><p>The alive set filtered to VLESS, for clients that like one protocol.</p><button data-copy="https://raw.githubusercontent.com/lumskyy/LumoVessConfig/main/output/happ-vless.txt">Copy link</button></div>
+</div>
 </section>
 <section>
 <h2>How to add in Happ</h2>
-<p>Open the add dialog, set Type to Subscription, and fill two fields. Name anything clear, like Lumo ELITE. Paste the link with no spaces around it. Leave Encrypted subscription off, since these lists are open, and leave unsafe connections off, since every link here is https. Press Add and Happ pulls the servers in a couple of seconds. Repeat for each file you want.</p>
+<ol class="steps">
+<li>Open Happ, press the plus sign, choose Subscription.</li>
+<li>Name it anything clear, like Lumo ELITE.</li>
+<li>Paste the copied link with no spaces around it.</li>
+<li>Leave Encrypted subscription off, since these lists are open, and leave unsafe connections off, since every link here is https.</li>
+<li>Press Add. Happ pulls the servers in a couple of seconds. Repeat for each file you want.</li>
+</ol>
 </section>
 <section>
 <h2>Right now</h2>
@@ -42,8 +49,17 @@
 <div><div class="num" id="mhttp">0</div><div class="lbl">median http, ms</div></div>
 <div><div class="num" id="mudp">0</div><div class="lbl">median udp, ms</div></div>
 </div>
-<p class="muted">Pulled <span id="totalin">0</span>, parsed <span id="parsed">0</span>, sources ok <span id="sources">0</span>, mode <span id="mode">unknown</span>.</p>
+<p class="muted">Pulled <span id="totalin">0</span>, parsed <span id="parsed">0</span>, sources ok <span id="sources">0</span>. TCP ok <span id="tcpok">0</span>, full ok <span id="fullok">0</span>, UDP ok <span id="udpok">0</span>, leaked out <span id="leaked">0</span>.</p>
 <div id="errbox" class="err" style="display:none"></div>
+</section>
+<section>
+<h2>What the tiers mean</h2>
+<div class="cards">
+<div class="card"><h3>Elite</h3><p>Three green rounds, Google twice plus Cloudflare through the node, UDP answered, narrow spread, no leaks. Capped at 80 with 8 per country.</p></div>
+<div class="card"><h3>Best</h3><p>Top 120 by score. Same hygiene, wider tolerances: higher ping or one slow round still passes.</p></div>
+<div class="card"><h3>Game</h3><p>Low ping first, nodes with working UDP ahead of the rest.</p></div>
+<div class="card"><h3>Plain rows</h3><p>The rest of the alive set, fastest first, transport written out in the name.</p></div>
+</div>
 </section>
 <section>
 <h2>Other clients</h2>
@@ -55,28 +71,30 @@
 </ul>
 </section>
 <section>
-<h2>What the tiers mean</h2>
-<p>ELITE is up to 80 nodes with 8 per country max: VLESS with TLS or Reality, three green rounds, Google twice plus Cloudflare through the node, UDP DNS answered, no leaks, narrow spread. BEST is the wider top 120 with the same hygiene and softer tolerances. GAME sorts low ping nodes with working UDP first. Plain rows are the rest of the alive set, fastest first, with the transport written out so rows read differently.</p>
-</section>
-<section>
 <h2>By country</h2>
-<p>Each file holds that country only, fastest first. Poland, Russia and Ukraine appear here whenever their nodes survive the hour.</p>
+<p>Each file holds that country only, fastest first. Poland, Russia and Ukraine appear here whenever their nodes survive the hour. Country files follow this shape, swap the code for the country you want.</p>
+<p><code id="countrypattern">https://raw.githubusercontent.com/lumskyy/LumoVessConfig/main/output/countries/JP.txt</code> <button id="copypattern">Copy</button></p>
 <input id="q" type="search" placeholder="Filter countries...">
 <table>
-<thead><tr><th>Code</th><th>Nodes</th><th>File</th></tr></thead>
+<thead><tr><th>Country</th><th>Nodes</th><th>File</th></tr></thead>
 <tbody id="ctable"></tbody>
 </table>
 </section>
 <section>
 <h2>How nodes get picked</h2>
-<p>Three rounds run about half a minute apart. TCP open time counts every round. TLS handshake counts where the node uses it. Where sing-box is present, Google generate_204, Cloudflare trace, an IP echo and a headers echo go through the node itself.</p>
+<p>Three rounds run about half a minute apart. TCP open time counts every round. TLS handshake counts where the node uses it. Where sing-box is present, Google generate_204, Cloudflare trace, an IP echo, a headers echo and three DNS queries over UDP go through the node itself.</p>
 <p>A keeper answers in at least two rounds, keeps its exit IP off the checker IP, and leaves no checker address in headers. On full runs Google and Cloudflare must both answer through the node plus at least one UDP query, otherwise it ships nowhere. Reality with Vision ranks above plain transports at equal speed because it survives DPI better in practice.</p>
 <p>The milliseconds in names come from the check runner. Happ measures from your machine, so its numbers differ, and n/a means the node stays silent on your network. Take the next row or refresh the subscription.</p>
-<p>Elite is a smaller file with harder rules: all three rounds green, both Google probes plus Cloudflare answering, HTTP median under 800 ms, TCP spread under 250 ms between rounds. The spread check drops nodes that freeze for a moment and recover, since those ruin games and calls even with a good median.</p>
-<p>Free ranges still get flagged by Cloudflare and game filters, so Happ retests on your side. When a best node slows down, the next one in the file usually behaves better on that route.</p>
+</section>
+<section>
+<h2>Questions</h2>
+<details><summary>Why does Happ show n/a on some rows?</summary><p>The runner and your machine take different roads to the node. A row with n/a stays silent on your network: the provider blocks it, the password died, or the node drowns in users. Take the next row. Reality rows and nearby countries answer most often.</p></details>
+<details><summary>How fresh are the lists?</summary><p>Runs start at minute 17 every 3 hours, plus once on every code push. Happ rechecks on its own every few minutes, and the refresh button in the subscription pulls the newest batch at once.</p></details>
+<details><summary>What if a run finds nothing?</summary><p>The previous files stay in place and only the stats update, with the reason shown at the top of this page. Happ never gets an empty list from us.</p></details>
+<details><summary>Is it anonymous?</summary><p>The connection layer exposes nothing: no real IP in headers, traffic leaves from the node address. The server side still belongs to whoever published the node, so no free list can promise no logs. Run your own Reality node for traffic that must stay private.</p></details>
 </section>
 <footer>
-<p class="muted">Lists refresh at minute 17 every 3 hours. Sources are open subscriptions. Nothing here can promise no logs on someone else server.</p>
+<p class="muted">Lists refresh at minute 17 every 3 hours. Sources are open subscriptions. <a href="https://github.com/lumskyy/LumoVessConfig">GitHub repo</a>.</p>
 <p class="muted">LumoVessConfig by lumskyy, CC BY-SA 4.0. Keep the nick on every copy or fork.</p>
 </footer>
 </main>

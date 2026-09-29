@@ -109,3 +109,88 @@ a {
   border-radius: 8px;
   font-size: 14px;
 }
+.hero {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  background: #121823;
+  border: 1px solid #232c3b;
+  border-radius: 16px;
+  padding: 22px;
+}
+.hero h1 {
+  margin: 0 0 6px;
+  font-size: 30px;
+}
+.hero p {
+  margin: 6px 0;
+}
+.pills {
+  margin-top: 10px;
+}
+.pill {
+  display: inline-block;
+  background: #161c26;
+  border: 1px solid #2a3340;
+  border-radius: 999px;
+  padding: 4px 12px;
+  font-size: 13px;
+  margin: 2px 6px 2px 0;
+}
+.cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-top: 12px;
+}
+.card {
+  background: #121823;
+  border: 1px solid #232c3b;
+  border-radius: 12px;
+  padding: 14px 16px;
+}
+.card h3 {
+  margin: 0 0 6px;
+  font-size: 16px;
+}
+.card p {
+  margin: 0 0 10px;
+  font-size: 14px;
+  color: #c3ccd6;
+}
+.card button {
+  margin-left: 0;
+}
+.card.top {
+  border-color: #8fb8ff;
+}
+.steps {
+  padding-left: 22px;
+}
+.steps li {
+  margin: 8px 0;
+}
+details {
+  background: #121823;
+  border: 1px solid #232c3b;
+  border-radius: 12px;
+  padding: 12px 16px;
+  margin: 10px 0;
+}
+summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+details p {
+  margin: 8px 0 2px;
+  color: #c3ccd6;
+}
+@media (max-width: 640px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+  .hero {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

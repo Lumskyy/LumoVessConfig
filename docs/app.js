@@ -74,7 +74,7 @@ async function init() {
     data = null;
   }
   if (!data) {
-    setText("updated", "after the first hourly run");
+    setText("updated", "after the first run");
     return;
   }
   setText("updated", data.updated || "unknown");
@@ -90,6 +90,10 @@ async function init() {
   setText("totalin", data.total_in || 0);
   setText("parsed", data.parsed || 0);
   setText("sources", String(data.sources_ok || 0) + " of " + String(data.sources_total || 0));
+  setText("tcpok", data.tcp_ok || 0);
+  setText("fullok", data.full_ok || 0);
+  setText("udpok", data.udp_ok || 0);
+  setText("leaked", data.leaked || 0);
   setText("mode", data.full_probe ? "full" : "tcp only");
   var eb = document.getElementById("errbox");
   if (eb) {
