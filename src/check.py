@@ -229,12 +229,21 @@ async def probe_with_singbox(node, binpath, timeout=18):
             binpath, "run", "-c", tmp.name,
             stdout=asyncio.subprocess.DEVNULL, stderr=asyncio.subprocess.DEVNULL,
         )
-        await asyncio.sleep(1.2)
+        await asyncio.sleep(0.4)
+        for _ in range(25):
+            try:
+                probe_sock = socket.socket()
+                probe_sock.settimeout(0.2)
+                probe_sock.connect(("127.0.0.1", mixed))
+                probe_sock.close()
+                break
+            except Exception:
+                await asyncio.sleep(0.2)
         proxy = "http://127.0.0.1:" + str(mixed)
         proxies = {"http://": proxy, "https://": proxy}
         res = {"http_ms": [], "google": 0, "cf": 0, "exit_ip": "", "leak": False, "trace": ""}
         try:
-            async with httpx.AsyncClient(proxies=proxies, timeout=timeout, follow_redirects=True) as c:
+            async with httpx.AsyncClient(proxies=proxies, timeout=timeout, follow_redirects=True, trust_env=False) as c:
                 t0 = time.monotonic()
                 try:
                     r = await c.get(GOOGLE_HTTP)
@@ -332,9 +341,11 @@ async def check_round(nodes, public_ip, binpath, limit=64):
 async def triple_check(nodes, rounds=3, delay=25, prefilter=1400, limit=64):
     nodes = list(nodes)
     if not nodes:
-        return []
+        return [], {"singbox": False, "fallback_tcp": False, "tcp_ok": 0, "full_ok": 0, "leaked": 0}
     public_ip = await get_public_ip()
     binpath = singbox_bin()
+    singbox_initial = bool(binpath)
+    fallback_used = False
     sem = asyncio.Semaphore(limit)
 
     async def fast_tcp(n):
@@ -350,7 +361,7 @@ async def triple_check(nodes, rounds=3, delay=25, prefilter=1400, limit=64):
     scored.sort(key=lambda x: x[0])
     cand = [n for _, n in scored[:prefilter]] if scored else []
     if not cand:
-        return []
+        return [], {"singbox": bool(binpath), "fallback_tcp": False, "tcp_ok": 0, "full_ok": 0, "leaked": 0}
     agg = {}
     for n in cand:
         key = str(n.get("host", "")).lower() + ":" + str(n.get("port", "")) + ":" + str(n.get("id", ""))[:12]
@@ -380,6 +391,17 @@ async def triple_check(nodes, rounds=3, delay=25, prefilter=1400, limit=64):
                 a["leak"] = True
             if r.get("tcp") is not None and (r.get("http_ms") or not binpath):
                 a["rounds_ok"] = a["rounds_ok"] + 1
+        if i == 0 and binpath:
+            t_ok = 0
+            f_ok = 0
+            for _, r in res.items():
+                if r.get("tcp") is not None:
+                    t_ok = t_ok + 1
+                if r.get("http_ms"):
+                    f_ok = f_ok + 1
+            if f_ok == 0 and t_ok > 0:
+                binpath = ""
+                fallback_used = True
         if i < rounds - 1:
             try:
                 await asyncio.sleep(delay)
@@ -406,4 +428,12 @@ async def triple_check(nodes, rounds=3, delay=25, prefilter=1400, limit=64):
             "rounds_ok": a["rounds_ok"],
             "full": bool(a["http"]),
         })
-    return final
+    diag = {"singbox": singbox_initial, "fallback_tcp": fallback_used, "tcp_ok": 0, "full_ok": 0, "leaked": 0}
+    for key, a in agg.items():
+        if a["tcp"]:
+            diag["tcp_ok"] = diag["tcp_ok"] + 1
+        if a["http"]:
+            diag["full_ok"] = diag["full_ok"] + 1
+        if a["leak"]:
+            diag["leaked"] = diag["leaked"] + 1
+    return final, diag

@@ -96,7 +96,7 @@ How the check works
 
 Three rounds run with a pause between them. Round one opens TCP and records the time. Round two completes TLS where the node asks for it. Round three pushes real requests through sing-box: Google generate_204 over http and https, Cloudflare trace, an IP echo and a headers echo. A node counts as alive when TCP opens in at least two rounds and the HTTP probes answer without exposing the checker IP. Exit IP has to differ from the direct IP.
 
-Elite adds the hard rules from the section above on top of this base. Overload cannot be read off a free node directly, so consistency across three spaced rounds stands in for it, and Happ url-test rechecks every few minutes on your side anyway. Without the sing-box binary the runner falls back to strict TCP under 350 ms with full rounds, and the site marks that run as tcp only.
+Elite adds the hard rules from the section above on top of this base. Overload cannot be read off a free node directly, so consistency across three spaced rounds stands in for it, and Happ url-test rechecks every few minutes on your side anyway. Without the sing-box binary the runner falls back to strict TCP under 350 ms with full rounds, and the site marks that run as tcp only. If a run finds zero alive nodes, it keeps the previous files and only updates the stats, so Happ never gets an empty list.
 
 <details>
 <summary>Full source list and schedule</summary>

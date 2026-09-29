@@ -1,4 +1,5 @@
 import asyncio
+import json
 import os
 from src.sources import SOURCES
 from src.fetch import fetch_all
@@ -21,11 +22,27 @@ async def main():
     if maxin > 0:
         nodes = nodes[:maxin]
     if not nodes:
-        stats = build_stats(total_in, parsed, 0, [], [], [], [], {}, ok, len(SOURCES), False)
+        stats = build_stats(total_in, parsed, 0, [], [], [], [], {}, ok, len(SOURCES), False, {"error": "no nodes parsed"})
         write_all([], [], [], {}, [], stats)
         return
-    checked = await triple_check(nodes, rounds=rounds, delay=delay, prefilter=prefilter, limit=64)
+    checked, diag = await triple_check(nodes, rounds=rounds, delay=delay, prefilter=prefilter, limit=64)
+    if not checked:
+        diag["error"] = "no candidates answered"
+        stats = build_stats(total_in, parsed, 0, [], [], [], [], {}, ok, len(SOURCES), False, diag)
+        with open(os.path.join("output", "stats.json"), "w", encoding="utf-8") as f:
+            json.dump(stats, f, ensure_ascii=False, indent=2)
+        with open(os.path.join("docs", "data.json"), "w", encoding="utf-8") as f:
+            json.dump(stats, f, ensure_ascii=False, indent=2)
+        return
     alive, has_full = rank_all(checked)
+    if not alive:
+        diag["error"] = "nothing alive, previous lists kept"
+        stats = build_stats(total_in, parsed, len(checked), alive, [], [], [], {}, ok, len(SOURCES), has_full, diag)
+        with open(os.path.join("output", "stats.json"), "w", encoding="utf-8") as f:
+            json.dump(stats, f, ensure_ascii=False, indent=2)
+        with open(os.path.join("docs", "data.json"), "w", encoding="utf-8") as f:
+            json.dump(stats, f, ensure_ascii=False, indent=2)
+        return
     best_pairs = pick_best(alive, limit=120)
     elite_pairs = pick_elite(alive, rounds, has_full, limit=80, per_country=8)
     game_pairs = pick_gaming(alive, limit=150)
@@ -80,7 +97,7 @@ async def main():
         seen_nodes.add(k)
         all_items.append(it)
     all_items = all_items[:800]
-    stats = build_stats(total_in, parsed, len(checked), alive, best, elite, gaming, groups, ok, len(SOURCES), has_full)
+    stats = build_stats(total_in, parsed, len(checked), alive, best, elite, gaming, groups, ok, len(SOURCES), has_full, diag)
     write_all(best, elite, gaming, groups, all_items, stats)
 
 
