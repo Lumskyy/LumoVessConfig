@@ -1,1 +1,0 @@
-vless://0659eac3-137b-4002-ba2e-88da4d071235@pruritus.patiromer.workers.dev:443?encryption=none&security=tls&sni=pruritus.patiromer.workers.dev&fp=chrome&insecure=0&allowInsecure=0&type=ws&host=pruritus.patiromer.workers.dev&path=/#Italy%20%C2%B7%2001%20%C2%B7%2055ms%20%C2%B7%20VLESS
