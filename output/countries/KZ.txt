@@ -1,1 +1,0 @@
-vless://4bdeee92-97e8-414d-bef6-ec1d5e2ab73b@87.199.130.119:443?encryption=none&flow=xtls-rprx-vision&security=reality&sni=kazartip.thewalkingded.life&fp=firefox&pbk=5JhqvTTHIhhA_2Jjc3_y6pwLmKfe4wtwq3vSt43P00I&sid=7cf408996c82639f&type=tcp&headerType=none#%F0%9F%87%B0%F0%9F%87%BF%20Kazakhstan%20%C2%B7%2001%20%C2%B7%205ms%20%C2%B7%20VLESS
