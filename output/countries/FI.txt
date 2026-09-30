@@ -1,1 +1,0 @@
-vless://940fcf3f-50da-469f-b67a-72de953343e2@199.232.78.159:443?path=/&amp;security=tls&amp;encryption=none&amp;insecure=0&amp;host=looazjboijji.global.ssl.fastly.net.&amp;type=ws&amp;allowInsecure=0&amp;sni=ssl.fastly.com#Finland%20%C2%B7%2001%20%C2%B7%206ms%20%C2%B7%20VLESS
