@@ -1,1 +1,0 @@
-vless://6202b230-417c-4d8e-b624-0f71afa9c75d@80.93.202.40:8880?security=none&type=ws&path=%2F&host=vms.lifetime02.workers.dev&packetEncoding=none#India%20%C2%B7%2001%20%C2%B7%205ms%20%C2%B7%20VLESS%20WS
