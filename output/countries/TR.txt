@@ -1,1 +1,0 @@
-vless://0da0a073-a5b0-4229-bf11-24592f6290b9@104.21.41.247:2053?security=tls&type=ws&path=%2Ftucdn%2F&host=tcdnu.azad0namah.ir&packetEncoding=xudp&sni=tcdnu.azad0namah.ir&fp=chrome&encryption=none#Turkey%20%C2%B7%2001%20%C2%B7%204ms%20%C2%B7%20VLESS%20TLS%20WS
