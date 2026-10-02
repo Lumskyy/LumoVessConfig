@@ -1,1 +1,1 @@
-vless://1fac5e18-2ca8-4626-c299-1f3f21c6b55e@a2.arshia-nova.ir:443?path=/&amp;security=tls&amp;alpn=h2&amp;encryption=none&amp;insecure=0&amp;host=c12.com&amp;fp=firefox&amp;type=ws&amp;allowInsecure=0&amp;sni=ssl.fastly.com#Finland%20%C2%B7%2001%20%C2%B7%20617ms%20%C2%B7%20VLESS
+vless://dc2fa672-c063-4c0d-b995-483d45db7349@199.232.78.159:443?path=/&security=tls&encryption=none&insecure=0&host=looazjboijji.global.ssl.fastly.net.&type=ws&allowInsecure=0&sni=ssl.fastly.com#Finland%20%C2%B7%2001%20%C2%B7%202ms%20%C2%B7%20VLESS%20TLS%20WS
