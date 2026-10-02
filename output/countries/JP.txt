@@ -1,1 +1,0 @@
-vless://8344360f-0349-4784-a19f-33fd92e89389@api.w2m.ink:443?security=tls&type=ws&path=%2Fv2&host=api.w2m.ink&packetEncoding=none&allowInsecure=1&sni=api.w2m.ink#Japan%20%C2%B7%2001%20%C2%B7%20793ms%20%C2%B7%20VLESS%20TLS%20WS
