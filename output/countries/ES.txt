@@ -1,1 +1,0 @@
-vless://812b1aeb-c6f7-43cb-8d8b-981711fea21a@172.65.90.53:8880?type=ws&host=dark-cake-4743.198-46c.workers.dev&path=/pyip=ProxyIP.JP.CMLiussss.net#Spain%20%C2%B7%2001%20%C2%B7%202ms%20%C2%B7%20VLESS%20WS
