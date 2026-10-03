@@ -1,0 +1,2 @@
+vless://dc2fa672-c063-4c0d-b995-483d45db7349@199.232.78.159:443?path=/&security=tls&encryption=none&insecure=0&host=looazjboijji.global.ssl.fastly.net.&type=ws&allowInsecure=0&sni=ssl.fastly.com#Finland%20%C2%B7%2001%20%C2%B7%202ms%20%C2%B7%20VLESS%20TLS%20WS
+vless://00bfbf66-a0ba-459a-8c14-4e68c9e25bd5@151.101.214.143:443?encryption=none&security=tls&sni=mail.fastly.com&alpn=h3&type=xhttp&mode=auto&host=danmark-fastly.global.ssl.fastly.net&path=%2F&fp=safari#Finland%20%C2%B7%2002%20%C2%B7%203ms%20%C2%B7%20VLESS%20TLS%20XHTTP
