@@ -1,1 +1,0 @@
-vless://36e8e5e8-8010-45a1-9fb7-9fa21f7e4c66@199.232.78.159:443?security=tls&type=ws&path=%2F&host=pannn1.global.ssl.fastly.net&packetEncoding=xudp&sni=ssl.fastly.com&fp=chrome&encryption=none#United%20Kingdom%20%C2%B7%2001%20%C2%B7%202ms%20%C2%B7%20VLESS%20TLS%20WS

@@ -1,1 +1,0 @@
-vless://1fcb913a-8739-4f96-ae07-b9baf68faf37@199.232.78.159:443?path=/&security=tls&encryption=none&insecure=0&host=loosboijji.global.ssl.fastly.net.&type=ws&allowInsecure=0&sni=ssl.fastly.com#Poland%20%C2%B7%2001%20%C2%B7%204ms%20%C2%B7%20VLESS%20TLS%20WS

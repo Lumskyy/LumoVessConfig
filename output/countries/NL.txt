@@ -1,1 +1,0 @@
-vless://dc2fa672-c063-4c0d-b995-483d45db7349@199.232.78.159:443?path=/&security=tls&encryption=none&insecure=0&host=sevenfeshab.global.ssl.fastly.net.&type=ws&allowInsecure=0&sni=ssl.fastly.com#Netherlands%20%C2%B7%2001%20%C2%B7%205ms%20%C2%B7%20VLESS%20TLS%20WS

@@ -1,1 +1,0 @@
-vless://76ac91c5-ea82-4046-8ee7-2ffbb563ac94@geo.shkola112.site:443?security=tls&type=ws&path=%2Fapi-vless&host=geo.shkola112.site&packetEncoding=xudp&sni=geo.shkola112.site&fp=chrome&encryption=none#Georgia%20%C2%B7%2001%20%C2%B7%20501ms%20%C2%B7%20VLESS%20TLS%20WS
