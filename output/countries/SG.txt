@@ -1,3 +1,1 @@
-vless://e5cc16a6-ea42-46b2-82ae-ad2157e1641b@104.18.35.86:8080?security=none&type=ws&path=%2Fsg-melbi&host=hhlfy.twiladaphne.ndjp.net&packetEncoding=xudp&sni=hhlfy.twiladaphne.ndjp.net#Singapore%20%C2%B7%2001%20%C2%B7%205ms%20%C2%B7%20VLESS%20WS
-vless://29c3dd6b-b164-40ca-a0d5-f06aca52a8b2@141.193.213.20:8443?security=tls&type=ws&path=%2F&host=u.srilankangrill.online&packetEncoding=xudp&sni=u.srilankangrill.online&fp=chrome#Singapore%20%C2%B7%2002%20%C2%B7%205ms%20%C2%B7%20VLESS%20TLS%20WS
-vless://29c3dd6b-b164-40ca-a0d5-f06aca52a8b2@141.193.213.21:8443?security=tls&type=ws&path=%2F&host=u.srilankangrill.online&packetEncoding=xudp&sni=u.srilankangrill.online&fp=chrome#Singapore%20%C2%B7%2003%20%C2%B7%206ms%20%C2%B7%20VLESS%20TLS%20WS
+vless://6202b230-417c-4d8e-b624-0f71afa9c75d@45.12.30.30:8880?security=none&type=ws&path=%2F&host=vms.lifetime28.workers.dev&packetEncoding=xudp#Singapore%20%C2%B7%2001%20%C2%B7%205ms%20%C2%B7%20VLESS%20WS
