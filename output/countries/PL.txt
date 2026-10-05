@@ -1,1 +1,0 @@
-vless://b92380e2-e03f-4861-856e-7c2373b04728@172.65.90.53:8880?security=none&type=ws&path=%2Fpyip%3DProxyIP.SG.CMLiussss.net&host=dry-thunder-7f57.57-1a3.workers.dev&packetEncoding=xudp&encryption=none#Poland%20%C2%B7%2001%20%C2%B7%205ms%20%C2%B7%20VLESS%20WS

@@ -1,1 +1,0 @@
-vless://30e4c878-15ca-4f53-ab32-04c60ecd3f31@172.65.90.52:8880?security=none&type=ws&path=%2Fpyip%3DProxyIP.US.CMLiussss.net&host=blue-rice-7142.30-346.workers.dev&packetEncoding=xudp&encryption=none#Italy%20%C2%B7%2001%20%C2%B7%205ms%20%C2%B7%20VLESS%20WS

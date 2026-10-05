@@ -1,2 +1,0 @@
-vless://2e9012a2-7f8c-4233-b78b-5228a9a4951b@104.17.26.45:8880?security=none&type=ws&path=%2Fpyip%3DProxyIP.KR.CMLiussss.net&host=icy-breeze-126c.211-eb3.workers.dev&packetEncoding=xudp#South%20Korea%20%C2%B7%2001%20%C2%B7%207ms%20%C2%B7%20VLESS%20WS
-vless://565326ee-c588-4843-9472-a051578ab1ae@log.bpminecraft.com:8880?security=none&type=ws&path=%2Fpyip%3DProxyIP.KR.CMLiussss.net&host=lucky-cell-e8c5.490-f12.workers.dev&packetEncoding=xudp#South%20Korea%20%C2%B7%2002%20%C2%B7%20631ms%20%C2%B7%20VLESS%20WS
