@@ -1,1 +1,2 @@
-vless://08aaab35-a42d-4755-a03e-20c18cb1b3e8@argo6.5671234.xyz:443?security=tls&type=ws&path=%2Fe8e2cecb6188f7fb&packetEncoding=xudp&sni=argo6.5671234.xyz&fp=chrome#Taiwan%20%C2%B7%2001%20%C2%B7%20492ms%20%C2%B7%20VLESS%20TLS%20WS
+vless://08aaab35-a42d-4755-a03e-20c18cb1b3e8@argo6.5671234.xyz:443?security=tls&type=ws&path=%2Fe8e2cecb6188f7fb&host=argo6.5671234.xyz&packetEncoding=xudp&sni=argo6.5671234.xyz&fp=chrome&encryption=none#Taiwan%20%C2%B7%2001%20%C2%B7%20628ms%20%C2%B7%20VLESS%20TLS%20WS
+vless://08aaab35-a42d-4755-a03e-20c18cb1b3e8@104.20.36.205:443?security=tls&type=ws&path=%2Fe8e2cecb6188f7fb&host=argo6.5671234.xyz&packetEncoding=xudp&sni=argo6.5671234.xyz&fp=chrome#Taiwan%20%C2%B7%2002%20%C2%B7%208ms%20%C2%B7%20VLESS%20TLS%20WS
