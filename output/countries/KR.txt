@@ -1,2 +1,0 @@
-vless://31f345f3-b8eb-4ca6-8b14-bb555ae2c1f9@172.67.187.219:8880?security=none&type=ws&path=%2Fpyip%3DProxyIP.KR.CMLiussss.net&host=tiny-feather-4c41.227.workers.dev&packetEncoding=xudp&encryption=none#South%20Korea%20%C2%B7%2001%20%C2%B7%202ms%20%C2%B7%20VLESS%20WS
-vless://31f345f3-b8eb-4ca6-8b14-bb555ae2c1f9@162.159.156.214:8880?security=none&type=ws&path=%2Fpyip%3DProxyIP.KR.CMLiussss.net&host=tiny-feather-4c41.227.workers.dev&packetEncoding=xudp&sni=tiny-feather-4c41.227.workers.dev&encryption=none#South%20Korea%20%C2%B7%2002%20%C2%B7%203ms%20%C2%B7%20VLESS%20WS

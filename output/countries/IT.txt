@@ -1,1 +1,0 @@
-vless://a5c7e18f-1701-46ed-8f42-00eb078d9445@172.65.90.52:8880?security=none&type=ws&path=%2Fpyip%3DProxyIP.KR.CMLiussss.net&host=weathered-snow-b87b.292-455.workers.dev&packetEncoding=xudp&encryption=none#Italy%20%C2%B7%2001%20%C2%B7%202ms%20%C2%B7%20VLESS%20WS
