@@ -1,0 +1,2 @@
+vless://22424ee2-6fe3-42ca-9749-6d4c5a8acc82@188.114.98.0:443?sni=tn1r.eu.cc&type=ws&host=tn1r.eu.cc&path=/id-pusatfp=chrome&security=tls#Italy%20%C2%B7%2001%20%C2%B7%2013ms%20%C2%B7%20VLESS%20TLS%20WS
+vless://9f5762c0-2fbb-4609-be8a-f3cf4f22fd38@fast.jkerm.com:443?path=/&security=tls&encryption=none&insecure=0&host=italyji.global.ssl.fastly.net.&type=ws&allowInsecure=0&sni=ssl.fastly.com#Italy%20%C2%B7%2002%20%C2%B7%20348ms%20%C2%B7%20VLESS%20TLS%20WS
