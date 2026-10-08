@@ -1,3 +1,1 @@
-vless://3c52e091-6714-4915-949f-2149fe69951b@104.18.26.90:443?security=tls&type=ws&path=%2Fws&host=v2ray.simspeedup.com&packetEncoding=xudp&sni=v2ray.simspeedup.com&fp=chrome#Thailand%20%C2%B7%2001%20%C2%B7%2018ms%20%C2%B7%20VLESS%20TLS%20WS
-vless://3c52e091-6714-4915-949f-2149fe69951b@104.16.10.185:443?security=tls&type=ws&path=%2Fws&host=v2ray.simspeedup.com&packetEncoding=xudp&sni=v2ray.simspeedup.com&fp=unsafe#Thailand%20%C2%B7%2002%20%C2%B7%2018ms%20%C2%B7%20VLESS%20TLS%20WS
-vless://3c52e091-6714-4915-949f-2149fe69951b@188.114.97.6:443?security=tls&type=ws&path=%2Fws&host=v2ray.simspeedup.com&packetEncoding=xudp&sni=v2ray.simspeedup.com&fp=unsafe#Thailand%20%C2%B7%2003%20%C2%B7%2018ms%20%C2%B7%20VLESS%20TLS%20WS
+vless://3c52e091-6714-4915-949f-2149fe69951b@104.18.26.90:443?security=tls&type=ws&path=/ws&host=v2ray.simspeedup.com&packetEncoding=xudp&sni=v2ray.simspeedup.com&fp=chrome#Thailand%20%C2%B7%2001%20%C2%B7%2020ms%20%C2%B7%20VLESS%20TLS%20WS
