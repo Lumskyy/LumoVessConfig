@@ -1,1 +1,0 @@
-vless://ce977d82-824b-4209-87f1-0719f78d6a2e@104.16.97.215:8880?security=none&type=ws&path=%2F&host=royal-mode-cf74.210-62d.workers.dev&packetEncoding=xudp#Japan%20%C2%B7%2001%20%C2%B7%2011ms%20%C2%B7%20VLESS%20WS

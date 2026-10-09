@@ -1,1 +1,0 @@
-vless://942bdcfc-e522-44f1-b899-3bd8db7c5ae2@www.gov.ua:8880?security=none&type=ws&path=/pyip=ProxyIP.SG.CMLiussss.net&host=winter-leaf-b4da.122-6c9.workers.dev&packetEncoding=xudp&encryption=none#Ukraine%20%C2%B7%2001%20%C2%B7%20413ms%20%C2%B7%20VLESS%20WS
