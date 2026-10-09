@@ -1,1 +1,0 @@
-vless://f4e6476f-40d0-40cb-841f-cc2f6909ff20@www.gov.ua:8880?packet-encoding=xudp&type=ws&headerType=none&host=calm-haze-d105.21-7cd.workers.dev&path=/pyip=ProxyIP.SG.CMLiussss.net#Ukraine%20%C2%B7%2001%20%C2%B7%20695ms%20%C2%B7%20VLESS%20WS
