@@ -1,1 +1,0 @@
-vless://8453bdb7-dd58-419d-b002-9456dd2e73d7@199.232.78.159:443?encryption=none&security=tls&sni=ssl.fastly.com&type=ws&host=pan2e.global.ssl.fastly.net&path=/#Denmark%20%C2%B7%2001%20%C2%B7%2014ms%20%C2%B7%20VLESS%20TLS%20WS

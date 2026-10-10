@@ -1,0 +1,1 @@
+vless://22424ee2-6fe3-42ca-9749-6d4c5a8acc82@188.114.98.0:443?sni=tn1r.eu.cc&type=ws&host=tn1r.eu.cc&path=/id-pusatfp=chrome&security=tls#Italy%20%C2%B7%2001%20%C2%B7%2021ms%20%C2%B7%20VLESS%20TLS%20WS
