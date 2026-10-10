@@ -1,1 +1,1 @@
-vless://ba9ba1d3-19c8-4792-9d3f-ddd2cdcc2e65@170.114.45.6:8443?security=tls&type=ws&path=%2Fxprolk-primeline&host=primelinelk.me&packetEncoding=xudp&sni=primelinelk.me&fp=firefox#Singapore%20%C2%B7%2001%20%C2%B7%2016ms%20%C2%B7%20VLESS%20TLS%20WS
+vless://ba9ba1d3-19c8-4792-9d3f-ddd2cdcc2e65@support.zoom.us:8443?security=tls&type=ws&path=%2Fxprolk-primeline&host=primelinelk.me&packetEncoding=xudp&sni=primelinelk.me&fp=chrome&encryption=none#Singapore%20%C2%B7%2001%20%C2%B7%20362ms%20%C2%B7%20VLESS%20TLS%20WS
