@@ -1,0 +1,1 @@
+vless://31608e93-a701-4604-b8de-c55baa393937@199.232.239.239:443?security=tls&type=ws&path=%2F%3Fed%3D2056&host=mr_anonoijji.global.ssl.fastly.net&packetEncoding=xudp&alpn=h2&pcs=cd6e838b9bfe31cab8b3d5c858b0d6223fe84ece236c1fdb281be93c302e1e6e&sni=speedtest.net&fp=chrome&encryption=none#Finland%20%C2%B7%2001%20%C2%B7%203ms%20%C2%B7%20VLESS%20TLS%20WS
