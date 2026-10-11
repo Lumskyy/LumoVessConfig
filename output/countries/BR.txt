@@ -1,0 +1,1 @@
+vless://6202b230-417c-4d8e-b624-0f71afa9c75d@139.64.235.30:8880?security=none&type=ws&path=%2F&host=vms.lifetime09.workers.dev&packetEncoding=xudp&encryption=none#Brazil%20%C2%B7%2001%20%C2%B7%202ms%20%C2%B7%20VLESS%20WS

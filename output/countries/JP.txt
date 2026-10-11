@@ -1,2 +1,1 @@
-vless://afb13fa2-bba2-417f-b8c2-62565f92a78d@172.67.174.37:8880?security=none&type=ws&path=%2F&host=orange-block-5cd1.124-199.workers.dev&packetEncoding=xudp#Japan%20%C2%B7%2001%20%C2%B7%202ms%20%C2%B7%20VLESS%20WS
-vless://afb13fa2-bba2-417f-b8c2-62565f92a78d@104.21.89.181:8880?security=none&type=ws&path=%2Fpyip%3DProxyIP.JP.CMLiussss.net&host=orange-block-5cd1.124-199.workers.dev&packetEncoding=xudp#Japan%20%C2%B7%2002%20%C2%B7%202ms%20%C2%B7%20VLESS%20WS
+vless://ae83f4a6-7fd3-4168-9f42-1260fc601155@104.16.107.139:8880?security=none&type=ws&path=%2Fpyip%3DProxyIP.JP.CMLiussss.net&host=shy-mud-e936.15-bb9.workers.dev&packetEncoding=xudp#Japan%20%C2%B7%2001%20%C2%B7%202ms%20%C2%B7%20VLESS%20WS
