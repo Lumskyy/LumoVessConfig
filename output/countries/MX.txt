@@ -1,1 +1,0 @@
-vless://aa5d861a-7799-41a7-bdf4-7a6414cf98fd@104.21.84.167:2053?security=tls&sni=uwu.blueknightnet.qzz.io&type=ws&host=uwu.blueknightnet.qzz.io&path=%2F%40BlueKnight_net--%40BlueKnight_net--%40BlueKnight_net--%40BlueKnight_net--%40BlueKnight_net--%40BlueKnight_net&fp=chrome&alpn=h2&allowInsecure=0#Mexico%20%C2%B7%2001%20%C2%B7%2017ms%20%C2%B7%20VLESS%20TLS%20WS
