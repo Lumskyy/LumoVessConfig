@@ -1,1 +1,2 @@
-vless://486ebf01-0b45-4c38-9ef6-198aa0f9d2c3@104.16.107.139:8880?security=none&type=ws&path=%2Fpyip%3DProxyIP.SG.CMLiussss.net&host=quiet-feather-19f3.410-a69.workers.dev&packetEncoding=xudp&encryption=none#Singapore%20%C2%B7%2001%20%C2%B7%209ms%20%C2%B7%20VLESS%20WS
+vless://235e318a-8bcb-4480-b256-7b65cc5d0b0a@103.169.142.90:443?security=tls&type=ws&path=%2FSingapore1&host=sg.lovehk.xyz&packetEncoding=xudp&sni=sg.lovehk.xyz&fp=chrome&encryption=none#Singapore%20%C2%B7%2001%20%C2%B7%206ms%20%C2%B7%20VLESS%20TLS%20WS
+vless://40af9131-d540-448a-bc56-5bba147a1dc3@27.50.49.154:2083?sni=proxy-34l.pages.dev&type=ws&host=proxy-34l.pages.dev&path=/?TELEGRAM--MARAMBASHI--MARAMBASHI?ed=512security=tls#Singapore%20%C2%B7%2002%20%C2%B7%206ms%20%C2%B7%20VLESS%20WS

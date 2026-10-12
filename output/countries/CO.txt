@@ -1,1 +1,0 @@
-vless://9d672694-c146-422e-b3b5-3717a38a0fcc@104.21.84.30:2053?path=%2Fapi%2Fvoip%2Fupdates%2Fstatic%2Ffr2035&security=tls&alpn=http%2F1.1&encryption=none&insecure=0&host=fr.api-music-fa.com&type=ws&allowInsecure=0&sni=fr.api-music-fa.com#Colombia%20%C2%B7%2001%20%C2%B7%209ms%20%C2%B7%20VLESS%20TLS%20WS
