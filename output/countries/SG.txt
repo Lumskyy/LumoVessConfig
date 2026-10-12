@@ -1,2 +1,1 @@
-vless://ba9ba1d3-19c8-4792-9d3f-ddd2cdcc2e65@170.114.45.6:8443?security=tls&type=ws&path=%2Fxprolk-primeline&host=primelinelk.me&packetEncoding=xudp&sni=primelinelk.me&fp=firefox#Singapore%20%C2%B7%2001%20%C2%B7%209ms%20%C2%B7%20VLESS%20TLS%20WS
-vless://a1de0630-5786-48a0-84f6-dc6f2de10d6d@104.18.35.86:2083?&security=tls&fp=unsafe&sni=vlsovip.1d.mom&type=ws&headerType=none&host=vlsovip.1d.mom&path=%2F#Singapore%20%C2%B7%2002%20%C2%B7%209ms%20%C2%B7%20VLESS%20TLS%20WS
+vless://486ebf01-0b45-4c38-9ef6-198aa0f9d2c3@104.16.107.139:8880?security=none&type=ws&path=%2Fpyip%3DProxyIP.SG.CMLiussss.net&host=quiet-feather-19f3.410-a69.workers.dev&packetEncoding=xudp&encryption=none#Singapore%20%C2%B7%2001%20%C2%B7%209ms%20%C2%B7%20VLESS%20WS
