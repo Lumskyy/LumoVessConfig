@@ -1,1 +1,0 @@
-vless://1d16c6e0-1bbe-435b-b661-90043fee999c@185.193.29.123:443?security=tls&type=ws&path=/Telegram-WangCai2🇨🇳&host=notls.lukongtou.eu.org&packetEncoding=xudp&sni=notls.lukongtou.eu.org&fp=chrome&encryption=none#United%20Kingdom%20%C2%B7%2001%20%C2%B7%203ms%20%C2%B7%20VLESS%20TLS%20WS
