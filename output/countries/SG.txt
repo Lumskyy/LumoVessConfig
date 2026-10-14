@@ -1,2 +1,1 @@
-vless://e5cc16a6-ea42-46b2-82ae-ad2157e1641b@172.67.71.187:8080?security=none&type=ws&path=%2Fsg-melbi&host=hhlfy.twiladaphne.ndjp.net&packetEncoding=xudp&sni=hhlfy.twiladaphne.ndjp.net#Singapore%20%C2%B7%2001%20%C2%B7%2018ms%20%C2%B7%20VLESS%20WS
-vless://e5cc16a6-ea42-46b2-82ae-ad2157e1641b@172.64.150.43:2082?security=none&type=ws&path=%2F&host=hhlfy.twiladaphne.ndjp.net&packetEncoding=xudp&sni=hhlfy.twiladaphne.ndjp.net#Singapore%20%C2%B7%2002%20%C2%B7%2016ms%20%C2%B7%20VLESS%20WS
+vless://e5cc16a6-ea42-46b2-82ae-ad2157e1641b@104.18.35.86:8080?&sni=hhlfy.twiladaphne.ndjp.net&type=ws&headerType=none&host=hhlfy.twiladaphne.ndjp.net&path=%2Fsg-melbi#Singapore%20%C2%B7%2001%20%C2%B7%2011ms%20%C2%B7%20VLESS%20WS
