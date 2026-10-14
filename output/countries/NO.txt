@@ -1,5 +1,2 @@
-vless://f49d04d6-aaa7-4013-b323-bc35b78230db@141.193.213.172:443?path=/wsrb7k2m?ed#Norway%20%C2%B7%2001%20%C2%B7%209ms%20%C2%B7%20VLESS
-vless://a2a57aef-f415-41ef-8886-28afd5eb2f0c@69.46.46.137:443?path=/ws/a2a57aef-f415-41ef-8886-28afd5eb2f0c?ed#Norway%20%C2%B7%2002%20%C2%B7%2010ms%20%C2%B7%20VLESS
-vless://698b212d-ca12-4794-8256-252a6e1b4533@141.193.213.172:443?path=/beeline?ed#Norway%20%C2%B7%2003%20%C2%B7%2011ms%20%C2%B7%20VLESS
-vless://dbb28391-4d1d-4f1b-b353-cc410b6664ff@norwayji.global.ssl.fastly.net:443?path=/&security=tls&encryption=none&host=norwayji.global.ssl.fastly.net.&type=ws&sni=norwayji.global.ssl.fastly.net#Norway%20%C2%B7%2004%20%C2%B7%20851ms%20%C2%B7%20VLESS%20TLS%20WS
-vless://2c5f2d6e-d683-49f7-a12b-a95460b90a92@no-lim2.nomush.ir:443?encryption=none&security=tls&sni=speedtest.net&fp=chrome&pcs=CD6E838B9BFE31CAB8B3D5C858B0D6223FE84ECE236C1FDB281BE93C302E1E6E&type=xhttp&host=nolimiraniserv1.global.ssl.fastly.net&path=/nolimitx&mode=packet-up#Norway%20%C2%B7%2005%20%C2%B7%201070ms%20%C2%B7%20VLESS%20TLS%20XHTTP
+vless://698b212d-ca12-4794-8256-252a6e1b4533@141.193.213.172:443?path=/beeline?ed#Norway%20%C2%B7%2001%20%C2%B7%208ms%20%C2%B7%20VLESS
+vless://f49d04d6-aaa7-4013-b323-bc35b78230db@141.193.213.172:443?path=/wsrb7k2m?ed#Norway%20%C2%B7%2002%20%C2%B7%206ms%20%C2%B7%20VLESS

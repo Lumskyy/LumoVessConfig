@@ -1,0 +1,1 @@
+vless://4af06e6a-63ae-43c1-83c0-f8f613aef263@104.18.13.229:8880?security=none&type=ws&path=%2Fpyip%3DProxyIP.JP.CMLiussss.net&host=withered-sea-c187.445-608.workers.dev&packetEncoding=xudp&encryption=none#Japan%20%C2%B7%2001%20%C2%B7%2011ms%20%C2%B7%20VLESS%20WS
