@@ -1,1 +1,1 @@
-vless://08ffff12-93bb-42eb-8c83-6489644a1d04@k2.cloud--vpn.site:443?path=%2F&security=tls&alpn=h2&encryption=none&insecure=0&host=c12.com&fp=firefox&type=ws&allowInsecure=0&sni=ssl.fastly.com#Finland%20%C2%B7%2001%20%C2%B7%20503ms%20%C2%B7%20VLESS%20TLS%20WS
+vless://08ffff12-93bb-42eb-8c83-6489644a1d04@k2.cloud--vpn.site:443?path=%2F&security=tls&alpn=h2&encryption=none&insecure=0&host=c12.com&fp=firefox&type=ws&allowInsecure=0&sni=ssl.fastly.com#Finland%20%C2%B7%2001%20%C2%B7%20653ms%20%C2%B7%20VLESS%20TLS%20WS
