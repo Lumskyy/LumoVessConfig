@@ -1,1 +1,0 @@
-vless://20ff936a-8eb5-4d27-9cce-93f2016d467b@188.114.97.6:443?security=tls&type=ws&path=%2F&host=free.nadun.store&packetEncoding=xudp&alpn=http%2F1.1&sni=free.nadun.store&fp=chrome#Singapore%20%C2%B7%2001%20%C2%B7%209ms%20%C2%B7%20VLESS%20TLS%20WS
