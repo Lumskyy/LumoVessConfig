@@ -1,1 +1,0 @@
-vless://9f534ac4-3c58-4a16-8b74-13dff09a0cf1@8.35.211.161:2053?security=tls&type=ws&path=/comics/buy/categories&host=d39333476.pages.dev&packetEncoding=xudp&sni=d39333476.pages.dev&fp=chrome#Malaysia%20%C2%B7%2001%20%C2%B7%206ms%20%C2%B7%20VLESS%20TLS%20WS
