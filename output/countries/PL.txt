@@ -1,0 +1,1 @@
+vless://2c291d4c-f01b-4a17-b87d-aa29b7becdc9@195.137.226.85:443?security=tls&type=xhttp&path=%2F&host=mobile.zandix.ir&packetEncoding=xudp&sni=mobile.zandix.ir&fp=chrome&mode=auto&extra=%7B%22xPaddingBytes%22%3A%22100-1000%22%7D&encryption=none#Poland%20%C2%B7%2001%20%C2%B7%2013ms%20%C2%B7%20VLESS%20TLS%20XHTTP
