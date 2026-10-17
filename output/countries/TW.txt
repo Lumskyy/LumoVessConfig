@@ -1,0 +1,1 @@
+vless://e6df2095-a73c-4043-8693-8d5a03686870@104.21.93.182:443?security=tls&sni=lucasjow.us.ci&type=ws&host=lucasjow.us.ci&path=%2Fcart%2Fdocs%2Fwww%2Fproxyip%3D108.160.132.132%3Fed%23Telegram---PLANB_NET---PLANB_NET---PLANB_NET---PLANB_NET&fp=chrome&alpn=http%2F1.1&allowInsecure=0#Taiwan%20%C2%B7%2001%20%C2%B7%2020ms%20%C2%B7%20VLESS%20TLS%20WS

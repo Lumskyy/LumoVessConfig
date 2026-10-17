@@ -1,1 +1,2 @@
-vless://e258977b-e413-4718-a3af-02d75492c349@14.102.228.76:2096?encryption=none&type=ws&security=tls&path=%2F&host=jp.aniua.qzz.io&sni=jp.aniua.qzz.io&allowInsecure=1#Czechia%20%C2%B7%2001%20%C2%B7%2019ms%20%C2%B7%20VLESS%20TLS%20WS
+vless://e6df2095-a73c-4043-8693-8d5a03686870@172.64.152.241:443?encryption=none&security=tls&sni=lucasjow.us.ci&fp=qq&type=ws&host=lucasjow.us.ci&path=%2Fcart%2Fdocs%2Fwww%2Fproxyip%3D108.160.132.132#Czechia%20%C2%B7%2001%20%C2%B7%2012ms%20%C2%B7%20VLESS%20TLS%20WS
+vless://e258977b-e413-4718-a3af-02d75492c349@14.102.228.76:2096?encryption=none&type=ws&security=tls&path=%2F&host=jp.aniua.qzz.io&sni=jp.aniua.qzz.io&allowInsecure=1#Czechia%20%C2%B7%2002%20%C2%B7%2010ms%20%C2%B7%20VLESS%20TLS%20WS
