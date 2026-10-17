@@ -1,0 +1,1 @@
+vless://56e4896e-90a9-4fe0-8480-90d3d68b9928@8.35.211.43:2053?&security=tls&fp=chrome&sni=go.iranfree.de5.net&type=ws&headerType=none&host=go.iranfree.de5.net&path=%2F#Malaysia%20%C2%B7%2001%20%C2%B7%207ms%20%C2%B7%20VLESS%20TLS%20WS
