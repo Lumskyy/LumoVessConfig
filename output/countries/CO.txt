@@ -1,0 +1,1 @@
+vless://1043634e-8d9d-4736-83fa-f14ddc9d464c@188.114.97.6:443?path=id-amz&security=tls&encryption=none&insecure=0&host=dfsuporte.garena.com.ex33r.eu.cc&type=ws&allowInsecure=0&sni=dfsuporte.garena.com.ex33r.eu.cc#Colombia%20%C2%B7%2001%20%C2%B7%205ms%20%C2%B7%20VLESS%20TLS%20WS
