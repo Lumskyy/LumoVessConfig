@@ -1,0 +1,1 @@
+vless://50414e45-4c5f-5a45-5553-82aecb6fe510@45.12.30.145:443?path=/stream/PANEL_ZEUS/82aecb6fe510/loc-0&security=tls&encryption=none&insecure=0&host=flow-fast-891.mahsasadegh12.workers.dev&type=ws&allowInsecure=0&sni=flow-fast-891.mahsasadegh12.workers.dev#Romania%20%C2%B7%2001%20%C2%B7%202ms%20%C2%B7%20VLESS%20TLS%20WS
