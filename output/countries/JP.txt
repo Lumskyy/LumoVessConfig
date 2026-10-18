@@ -1,1 +1,1 @@
-vless://4e4f1f70-5e56-4a76-bb9d-db087f4690c4@104.21.0.87:443?security=tls&type=ws&path=%2Ftyxyws&host=jp3.yohototo.top&packetEncoding=xudp&sni=jp3.yohototo.top&fp=chrome#Japan%20%C2%B7%2001%20%C2%B7%2019ms%20%C2%B7%20VLESS%20TLS%20WS
+vless://495c7195-85b8-498a-bf20-2ea9ce9175b5@162.159.135.234:443?path=/?TELEGRAM--MARAMBASHI--MARAMBASHI--MARAMBASHI--MARAMBASHI?ed=2560&security=tls&alpn=h3,h2&encryption=none&insecure=0&host=snip.edgeoneai.cc.cd&fp=chrome&type=ws&allowInsecure=0&sni=snip.edgeoneai.cc.cd#Japan%20%C2%B7%2001%20%C2%B7%201ms%20%C2%B7%20VLESS%20TLS%20WS
