@@ -1,0 +1,1 @@
+vless://e6df2095-a73c-4043-8693-8d5a03686870@172.64.152.241:443?security=tls&type=ws&path=%2Fcart%2Fdocs%2Fwww%2Fproxyip%3D108.160.132.132&host=lucasjow.us.ci&packetEncoding=xudp&sni=lucasjow.us.ci&fp=qq#Japan%20%C2%B7%2001%20%C2%B7%202ms%20%C2%B7%20VLESS%20TLS%20WS
