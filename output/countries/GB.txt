@@ -1,1 +1,1 @@
-vless://d342d11e-d224-4463-b982-532309285094@188.164.248.216:443?encryption=none&host=ccc.010304.xyz&path=%2F&security=tls&sni=ccc.010304.xyz&type=ws&fp=qq#United%20Kingdom%20%C2%B7%2001%20%C2%B7%207ms%20%C2%B7%20VLESS%20TLS%20WS
+vless://d342d11e-d224-4463-b982-532309285094@188.164.248.216:443?encryption=none&host=ccc.010304.xyz&path=%2F&security=tls&sni=ccc.010304.xyz&type=ws&fp=ios#United%20Kingdom%20%C2%B7%2001%20%C2%B7%206ms%20%C2%B7%20VLESS%20TLS%20WS
