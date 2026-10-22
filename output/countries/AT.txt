@@ -1,1 +1,0 @@
-vless://d18c6897-2849-456a-8c46-d7ecece47c20@141.101.90.108:2053?security=tls&type=ws&path=%2Fvideo%2FHxNMGkZdGw0PRk1GVw8YF14OXkwNVVtIRg1HUlxQSwUEVRwJUx8BQRoaSVhfRhoOChkDDUs%3Dfp%3Dchrome&host=wzs.echo.net.eu.org&packetEncoding=xudp&sni=wzs.echo.net.eu.org&fp=chrome#Austria%20%C2%B7%2001%20%C2%B7%209ms%20%C2%B7%20VLESS%20TLS%20WS
