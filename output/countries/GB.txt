@@ -1,1 +1,1 @@
-vless://d342d11e-d224-4463-b982-532309285094@188.164.248.216:443?encryption=none&host=ccc.010304.xyz&path=%2F&security=tls&sni=ccc.010304.xyz&type=ws&fp=chrome#United%20Kingdom%20%C2%B7%2001%20%C2%B7%206ms%20%C2%B7%20VLESS%20TLS%20WS
+vless://40af9131-d540-448a-bc56-5bba147a1dc3@103.116.7.100:2087?encryption=none&security=tls&type=ws&host=proxy-1cu.pages.dev&path=%2F&sni=proxy-1cu.pages.dev&fp=android#United%20Kingdom%20%C2%B7%2001%20%C2%B7%201ms%20%C2%B7%20VLESS%20TLS%20WS
